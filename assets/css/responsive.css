@@ -1,0 +1,68 @@
+/* Normal desktop :1200px. */
+@media (min-width: 1200px) and (max-width: 1500px) {
+
+
+}
+
+
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+
+
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+}
+
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+    .slider-img {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .post-in {
+
+        font-size: 15px;
+        text-align: center;
+        padding-bottom: -18px;
+    }
+
+    .align-center-vertica {
+        text-align: center;
+        align-self: center !important;
+    }
+
+    .section--hero__focus {
+        background: #feda06;
+        align-self: center !important;
+    }
+
+    .post-title {
+        font-size: 28px;
+    }
+
+    .edito .title-heading, .formule .title-heading {
+        font-size: 30px;
+    }
+
+    .edito p {
+        font-size: 16px;
+    }
+    .edito {
+        padding: 20px 30px;
+    }
+    .footer-quote__content {
+        font-size: 16px;
+    }
+}
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+ 
+}

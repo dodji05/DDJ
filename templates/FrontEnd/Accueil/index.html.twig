@@ -1,0 +1,68 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block flashNews %}
+    <section style="background: #000145">
+        <div class="container">
+            <div class="row">
+                <div class="fil-actu">
+                    <div class="titre-actu">
+                        News
+                    </div>
+                    <div class="actu-content">
+                        <marquee onmouseout="this.start();" onmouseover="this.stop();" behavior="scroll" direction="left" loop="infinite" scrolldelay="0" scrollamount="3" height="20px">
+                      
+
+ {% for news in flashnews %}
+                               
+                                   {{ news.contenu | raw }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+                               
+                            {%  endfor %}
+                           
+                                                    </marquee>
+                    </div>
+                </div>
+                <!--                        <div class="col-lg-12" style="background: #000145">-->
+                <!--                            <div class="trending-tittle">-->
+                <!--                                <strong>Flash news</strong>-->
+
+                <!--                                <div class="trending-animated">-->
+                <!--                                    <ul id="js-news" class="js-hidden">-->
+                <!--                                       -->
+                <!--                                        <li class="news-item">A chaud : 23 milliards de francs CFA, c'est le montant du financement obtenu par le Bénin auprès des partenaires internationaux pour la rénovation des palais royaux d'Abomey et la création du musée de l'épopée des amazones.</li>-->
+                <!--                                        <li class="news-item">L'examen du certificat d'études primaires ( CEP) a démarré ce lundi 07 juin 2021 sur toute l'étendue du territoire national. Plus de 200 milles candidats vont à l'assaut de ce parchemin.</li>-->
+                <!--                                        <li class="news-item">Vous êtes sur le site, en construction, de votre hebdomadaire Le Déchaîné du Jeudi. Vos observations et propositions d'amélioration sont attendus. Cette plate-forme vous permettra d'acheter le DDJ directement en ligne.</li>-->
+                <!--                                    </ul>-->
+                <!--                                </div>-->
+
+                <!--                            </div>-->
+                <!--                        </div>-->
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block maincontent %}
+
+    {% include 'FrontEnd/Accueil/partials/_la-une.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_pub.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_edito.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_formule_abonnement.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_newsletter.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_univers.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_articles.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_boutique.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_videos.html.twig' %}
+    {% include 'FrontEnd/Accueil/partials/_popup.html.twig' %}
+
+
+{% endblock %}
+{% block javascript %}
+<script>
+
+    jQuery(document).ready(function () {
+
+    $('.modal').modal()
+
+})
+
+
+</script>
+{% endblock %}

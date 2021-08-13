@@ -1,0 +1,114 @@
+<section>
+    <div class="wrap-title-bg">
+        <h2 class="ui-title-bg"> NOS DERNIERS ARTICLES  </h2>
+    </div>
+</section>
+<section  style="background:#2a2a2a">
+    <!--        <div class="wrap-title-bg">-->
+    <!--            <h2 class="ui-title-bg"> NOS DERNIERS ARTICLES A LIRE </h2>-->
+    <!--        </div>-->
+    <section  style="background:#2a2a2a">
+        <!--        <div class="wrap-title-bg">-->
+        <!--            <h2 class="ui-title-bg"> NOS DERNIERS ARTICLES A LIRE </h2>-->
+        <!--        </div>-->
+        <div class="weekly2-news-area pt-50 pb-30">
+            <div class="container " style="background:#2a2a2a">
+                <div class="weekly2-wrapper" style="background:#2a2a2a">
+                    <div class="row">
+                        <!-- Banner -->
+
+                        <div class="col-lg-12">
+                            <div class="slider-wrapper">
+                                <!-- section Tittle -->
+                                <!--                                <div class="row">-->
+                                <!--                                    <div class="col-lg-12">-->
+                                <!--                                        <div class="small-tittle mb-30">-->
+                                <!--                                            <h3>NOS DERNIERS ARTICLES A LIRE</h3>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!-- Slider -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="weekly2-news-active d-flex">
+                                            {% for article in articles %}
+                                                <!-- Single -->
+                                                <div class="weekly2-single">
+                                                    <div class="weekly2-img">
+                                                        <a
+                                                                href="{{ path('front_articles_show',{'rubrique': article.categories.slug,'Slug': article.slug}) }}"
+                                                                class="prettyPhoto">
+                                                            <img
+                                                                    src="{{ vich_uploader_asset(article) }}"
+                                                                    alt="{{ article.slug }}"
+                                                                    class="img-responsive"/></a><span
+                                                                class="label bg-{{ article.categories.slug }}">{{ article.categories.libelle }}</span><span
+                                                        ></span>
+                                                    </div>
+                                                    <div class="weekly2-caption">
+                                                        <h4><a href="{{ path('front_articles_show',{'rubrique': article.categories.slug,'Slug': article.slug}) }}">{{ article.titre }}</a></h4>
+
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+{#                                            <!-- Single -->#}
+{#                                            <div class="weekly2-single">#}
+{#                                                <div class="weekly2-img">#}
+{#                                                    <a#}
+{#                                                            href="assets/images/articles/Articles-ddj-148-Croc-Actu-Guidigbi.jpg"#}
+{#                                                            class="prettyPhoto"><img#}
+{#                                                                src="assets/images/articles/Articles-ddj-148-Croc-Actu-Guidigbi.jpg"#}
+{#                                                                alt="Foto"#}
+{#                                                                class="img-responsive"/></a>#}
+{#                                                    <span class="label  bg-croc-actu">Croc’Actu</span>#}
+{#                                                </div>#}
+{#                                                <div class="weekly2-caption">#}
+{#                                                    <h4><a href="croc-actu-un-cheval-de-troie.html">Un cheval de Troie ?</a></h4>#}
+
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <!-- Single -->#}
+{#                                            <div class="weekly2-single">#}
+{#                                                <div class="weekly2-img">#}
+{#                                                    <a#}
+{#                                                            href="assets/images/articles/Articles-ddj-148-Beaux-Coups-de-Culture.jpg"#}
+{#                                                            class="prettyPhoto"><img#}
+{#                                                                src="assets/images/articles/Articles-ddj-148-Beaux-Coups-de-Culture.jpg" alt="Foto"#}
+{#                                                                class="img-responsive"/></a><span#}
+{#                                                            class="label bg-beaux-coups-de-culture">Beaux Coups de Culture</span><span#}
+{#                                                    ></span>#}
+{#                                                </div>#}
+{#                                                <div class="weekly2-caption">#}
+{#                                                    <h4><a href="hector-sonon-et-fred-cadoux-exposent-explosent-a-la-maison-rouge.html">Hector Sonon et Fred Cadoux exposent/explosent à la Maison Rouge</a></h4>#}
+
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <!-- Single -->#}
+{#                                            <div class="weekly2-single">#}
+{#                                                <div class="weekly2-img">#}
+{#                                                    <a#}
+{#                                                            href="assets/images/articles/Articles-ddj-147-Carnadage-de-Talon-1-a-Talon-2.jpg"#}
+{#                                                            class="prettyPhoto"><img#}
+{#                                                                src="assets/images/articles/Articles-ddj-147-Carnadage-de-Talon-1-a-Talon-2.jpg"#}
+{#                                                                alt="Foto"#}
+{#                                                                class="img-responsive"/></a><span#}
+{#                                                            class="label bg-carnadage">Carnadage</span><span#}
+{#                                                    ></span>#}
+{#                                                </div>#}
+{#                                                <div class="weekly2-caption">#}
+{#                                                    <h4><a href="#"> Talon 1 à Talon 2 : ce qui ne changera pas</a></h4>#}
+
+{#                                                </div>#}
+{#                                            </div>#}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

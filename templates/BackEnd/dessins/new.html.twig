@@ -1,0 +1,60 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block  content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Dessins </h5><span>dessins de nos differents dessinateurs seuls les 20 premieres images seront prise en compte</span>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+
+{#                        <div class="mb-3">#}
+{#                            {{ form_row(form.titre) }}#}
+{#                        </div>#}
+                        <div class="mb-3">
+                            {{ form_row(form.auteur) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.images) }}
+                        </div>
+                        <button class="btn btn-outline-success">{{ button_label|default('Enregistrer') }}</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-offset-md-1">
+                <div class="card">
+
+                    {# <div class="card-header"> #}
+
+                    {# </div> #}
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                {% for dessin in tousdessins %}
+                                    <div class="col-md-3 mb-5">
+                                        <img src="{{ vich_uploader_asset (dessin) }}" alt="" class="img-fluid">
+                                        <u>Dessinateur:</u> <a href="{{ path('admin_dessins_auteur',{'nom': dessin.auteur.nom }) }}">{{ dessin.auteur.nom }}</a> <b> </b>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

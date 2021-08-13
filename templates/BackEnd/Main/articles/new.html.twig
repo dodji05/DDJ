@@ -1,0 +1,31 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 offset-md-1">
+            <div class="card">
+                <div class="card-header">
+                    <h5> {{ headertitle }}</h5>
+                </div>
+                <div class="card-body">
+                    {{ include('BackEnd/Main/articles/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ asset('BackEnd/assets/js/editor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('BackEnd/assets/js/editor/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('BackEnd/assets/js/editor/ckeditor/styles.js') }}"></script>
+    <script src="{{ asset('BackEnd/assets/js/editor/ckeditor/ckeditor.custom.js') }}"></script>
+{% endblock %}

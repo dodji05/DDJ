@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Dessins{% endblock %}
+
+{% block body %}
+    <h1>Edit Dessins</h1>
+
+    {{ include('dessins/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('dessins_index') }}">back to list</a>
+
+    {{ include('dessins/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block  content %}
+ <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header p-20">
+                    <h5>Commandes</h5>
+                    <span> Traiter vos commandes <span>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th>Date</th>
+                        <th>Numéro</th>
+                        <th>Client</th>
+                        <th>Total</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for commande in commandes %}
+                            <tr>
+                                <td> {{ commande.DateCommande ? commande.DateCommande|date('Y-m-d H:i:s') : '' }}</td>
+                                <td><a href="#"> {{ commande.id }}</a></td>
+                                <td>
+                                    <strong> {{ commande.user.prenom ~" "~ commande.user.nom }}</strong> <br>
+                                    <div style="color: #ababab;">{{ commande.user.email ~ " / " ~ commande.user.telephone }}</div>
+
+                                </td>
+                                <td>{{ commande.total }}FCFA</td>
+                                <td><a class="btn btn-pill btn-light btn-air-light"> Afficher </a></td>
+                              
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

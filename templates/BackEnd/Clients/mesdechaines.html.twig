@@ -1,0 +1,67 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block stylesheet %}
+    <style>
+        .parution-items {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .parutions-details-numero {
+
+            /*margin: 15px;*/
+        ;
+            font-size: 12px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+
+{% endblock %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_clients.html.twig' %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 offset-md-1">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Mes achats</h2>
+                  </div>
+                <div class="card-body">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                {% for parution in  mesdechaines %}
+                                    {% for ligne in parution.lignesCommandes %}
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="parution-items" style="text-align: center">
+                                                <img src="{{ vich_uploader_asset(ligne.variant.produits) }}"
+
+                                                    height="150px">
+
+                                            </div>
+                                            <div class="parution-details" style="text-align: center">
+                                                <div class="parutions-details-numero">
+                                                    {% if ligne.variant.libelle =='Version numérique'%}
+                                                        <a href="{{ path('TB_client_lecture',{'slug' : ligne.variant.slug}) }}"> Lire la Parution {{ ligne.variant.produits.Nom }}</a>
+                                                    {% endif %}
+                                                    {% if ligne.variant.libelle =='Version papier'%}
+                                                        <span style="font-size: 10px"> Version papier</span>
+                                                    {% endif %}
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

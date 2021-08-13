@@ -1,0 +1,113 @@
+<div id="sidebar-menu">
+    <ul class="sidebar-links" id="simple-bar">
+        <li class="back-btn"><a href="index.html"><img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt=""></a>
+            <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+        </li>
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan-1">General</h6>
+
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('TB_index') }}"><i data-feather="list"> </i><span>Tableau de bord</span></a></li>
+
+
+
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">La Une </h6>
+                <p class="lan">Voir & inserer la une</p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('la_une_new') }}">
+                <i data-feather="monitor"> </i><span>Inserer la une</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('la_une_index') }}">
+                <i data-feather="list"> </i><span>Les Unes</span></a></li>
+
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Articles </h6>
+                <p class="lan">Voir & inserer des articles</p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_articles_edito_new') }}">
+                <i data-feather="monitor"> </i><span>Le Dit Trop</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_articles_new') }}">
+                <i data-feather="monitor"> </i><span>Nouvel Article</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_articles_flash_new') }}">
+                <i data-feather="monitor"> </i><span>Flash News</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_articles_index') }}">
+                <i data-feather="monitor"> </i><span>Tous les articles </span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_rubrique_artilces_index') }}">
+                <i data-feather="monitor"> </i><span>Rubriques</span></a></li>
+
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Dessins </h6>
+                <p class="lan">dessins , loky, BéDé</p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_dessins_new_dessin',{'genre':'loky'}) }}">
+                <i data-feather="monitor"> </i><span>Loky</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_dessins_new_dessin',{'genre':'coinBD'}) }}">
+                <i data-feather="monitor"> </i><span>Coin BéDé</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_dessins_new') }}">
+                <i data-feather="monitor"> </i><span>Dessins</span></a></li>
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Produits </h6>
+                <p class="lan">parutions et BD à vendre</p>
+            </div>
+        </li>
+        <li class="sidebar-list">
+            <a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_produits_new') }}">
+                <i data-feather="monitor"> </i><span>Insérer un produit</span></a>
+            <a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_produits_index') }}">
+                <i data-feather="monitor"> </i><span>Liste des produits</span></a>
+        </li>
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Abonnement </h6>
+                <p class="lan">Formules d'abonnement & Abonnés</p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Abonnés</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Abonnement en cours </span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Formules d'abonnement </span></a></li>
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Commandes </h6>
+                <p class="lan"> Ventes des parutions & BD </p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('la_une_new') }}">
+                <i data-feather="monitor"> </i><span>Clients</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{ path('admin_commandes_index') }}">
+                <i data-feather="monitor"> </i><span>Commandes</span></a></li>
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Autres </h6>
+                <p class="lan"> Sliders & pub etc... </p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Slider</span></a></li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Pub</span></a></li>
+
+        <li class="sidebar-main-title">
+            <div>
+                <h6 class="lan">Utilisateurs  </h6>
+                <p class="lan"> Ajouter des collaborateurs  </p>
+            </div>
+        </li>
+        <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="#">
+                <i data-feather="monitor"> </i><span>Utilisateurs</span></a></li>
+
+
+    </ul>
+</div>
+<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

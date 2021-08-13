@@ -1,0 +1,52 @@
+{% apply inline_css(source('@styles/bootstrap.min.css')) %}
+<h1 class="color:#e47085"> Nouvelle commande : n°{{ commande.id }}</h1>
+
+
+<p>
+    Vous avez reçu une nouvelle commande de {{ client.nom }} ({{ commande.DateCommande|date('F jS') }})
+</p>
+<p>
+    client : {{ client.nom }}
+</p>
+<p>
+    Numero de téléphone : {{ client.telephone }}
+</p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% set total = 0 %}
+    {% for ligne in commande.lignesCommandes %}
+        <tr>
+
+            <td>
+                {% if ligne.variant.produits.Categorie.libelle =='abonnement' %}
+                    Abonnement version {{ ligne.variant.produits.Nom  }} ( {{  ligne.variant.dure}} ) mois
+                {% endif %}
+                {% if ligne.variant.produits.Categorie.libelle =='parution' %}
+                    Parution {{ ligne.variant.produits.nom }} ({{ ligne.variant.libelle }})
+                {% endif %}
+
+
+               </td>
+            <td>{{ ligne.quantite }}</td>
+            <td>{{ ligne.Prix }}</td>
+            <td> {{ (ligne.quantite * ligne.Prix) |number_format(0, ' ', ' ') }}
+                {% set total = total + (ligne.quantite * ligne.Prix)  %}
+            </td>
+
+        </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="3"> TOTAL : </td>
+        <td>  {{ total |number_format(0, ' ', ' ') }}</td>
+    </tbody>
+
+</table>
+{% endapply %}

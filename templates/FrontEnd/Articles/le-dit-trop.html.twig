@@ -1,0 +1,65 @@
+{% extends 'FrontEnd/base_page_interieur.html.twig' %}
+{% block stylesheet %}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-main.css') }}">#}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-util.css') }}">#}
+{% endblock %}
+ {% block leftcontent %}
+     <section class="blog_area single-post-area section-padding">
+
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+
+                         <div class="container bootdey">
+                             <div class="row align-items-center">
+                                 <div class="col-12 d-flex text-center align-items-center justify-content-center"
+                                      style="background-image: url('{{ asset('FrontEnd/assets/images/Le-dit-trop-de-Vianney.jpg') }}'); height: 146px">
+                                     <h3 style="color:#ffffff; text-transform: uppercase"
+                                         class="align-items-center justify-content-center auteur-head">
+                                         Le Dit Trop de Vianney
+                                     </h3>
+
+                                 </div>
+                             </div>
+
+                         </div>
+                     {% for articles in CategoriesArticles.articles %}
+                         <section style="margin-top: 35px; background: #f1f1f0">
+
+                             <div class="container">
+
+                                 <div class="row">
+                                     <div class="col-md-12 ">
+                                         <div class="edito edito-single border-radius-10">
+                                             <h3 class="title-heading-single">
+                                            <span style="color: #ec1d25" class="text-left">
+                                                PARUTION  {{ articles.numeroParution }}
+                                            </span>
+                                                 <br>
+                                                 {{ articles.titre }}
+                                             </h3>
+                                             <div>
+                                                 {{  articles.contenu | raw }}
+                                             </div>
+
+                                         </div>
+                                     </div>
+                                     <!--                        <div class="col-md-4"> </div>-->
+                                 </div>
+
+
+                             </div>
+
+
+                         </section>
+                     {% endfor %}
+
+
+
+
+                 </div>
+
+             </div>
+         </div>
+     </section>
+ {% endblock %}

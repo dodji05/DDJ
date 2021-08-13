@@ -1,0 +1,140 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block stylesheet %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/datatables.css') }}">
+{% endblock %}
+{% block  content %}
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Liste des unes</h3>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('TB_index') }}"> <i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Une</li>
+                        <li class="breadcrumb-item active">Liste</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid starts-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 offset-md-2">
+                <div class="card">
+                    {#                    <div class="card-header">#}
+                    {#                        <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>#}
+                    {#                    </div>#}
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="basic-1_wrapper" class="dataTables_wrapper no-footer">
+                                <table class="table display dataTable no-footer" id="basic-1">
+                                    <thead>
+                                    <tr>
+
+                                        <th class="text-center">Image</th>
+                                        <th class="text-center">Numéro de parution</th>
+
+                                        <th class="text-center">Date</th>
+
+                                        <th class="text-center">actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for une in unes %}
+                                        <tr>
+                                            <td class="text-center">
+                                                <img src="{{ vich_uploader_asset(une)|imagine_filter('launesthumbail') }}"
+                                                     alt=""></td>
+                                            <td valign="middle" class="text-center">{{ une.Numero }}</td>
+
+                                            <td valign="middle" class="text-center">{{ une.date ? une.date|date('Y-m-d H:i:s') : '' }}</td>
+
+                                            <td valign="middle" class="text-center">
+                                                {#                                        <a href="{{ path('la_une_show', {'id': une.id}) }}">show</a>#}
+                                                <a href="{{ path('la_une_edit', {'id': une.id}) }}"> <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="#" data-toggle="confirmation"
+                                                   data-title="Êtes-vous certain?"
+                                                   data-placement="left"
+                                                   data-btn-ok-label="Oui"
+                                                   data-btn-cancel-label="Non"
+                                                   class="supp-sweet"> <i class="fa fa-trash-o"></i> </a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="9">Aucune une enregistrée</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <a class="btn btn-outline-success m-r-10 m-t-25" href="{{ path('la_une_new') }}">
+                                    <i class="fa fa-plus me-1"></i> Nouvelle une de la semaine
+                                </a>
+{#                                <button class="btn btn-success m-r-10 m-t-25" type="button" title="" data-bs-original-title="">#}
+
+{#                                </button>#}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container-fluid Ends-->
+{% endblock %}
+{% block javascript %}
+<script src = "{{ asset('BackEnd/assets/js/sweet-alert/sweetalert.min.js') }}"></script>
+{#<script src="{{ asset('BackEnd/assets/js/ssweet-alert/app.js') }}"></script>#}
+<script src="{{ asset('BackEnd/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('BackEnd/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+<script>
+
+$('.supp-sweet').on('click', function () {
+ swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                        type: "POST",
+                        url:"{{ path('la_une_edit', {'id': 1}) }} ",
+                        data: data,
+                        sucess: function(data, dataTpe) {
+                           swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                           error : function (xhr, ajaxOptions, thrownError) {
+                              swal("Error deleting!", "Please try again", "error");
+                           }
+                        }
+                        })
+                       
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                })
+    })
+
+</script>
+{% endblock %}
+
+
+
+

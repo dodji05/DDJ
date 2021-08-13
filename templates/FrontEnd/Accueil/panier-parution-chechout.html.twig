@@ -1,0 +1,82 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+{#    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/panier.css') }}">#}
+    <style>
+        .panier-header {
+            font-family: "urwgrotesk_condensed_bold";
+            font-size: 40px;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+    </style>
+{% endblock %}
+{% block maincontent %}
+    <section class="blog_area section-padding" style=" padding-top: 60px !important; ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        {% if (elements|length) > 0 %}
+                            <h2 class="panier-header"> Votre commande </h2>
+                            <span style="color: #ff0000; font-size: 14px"> Le paiement de votre commande se fera soit par carte visa soit par flooz ou par mobile money
+                        Veuillez a ce que votre compte dispose du montant nécessaire ou recharger-le
+                        </span>
+                            <table class="table">
+                                <thead>
+                                <tr style="background-color: #ec1d25; color: white">
+                                    <th style=" width: 15% !important;"></th>
+                                    <th>Produit</th>
+                                    <th>Prix</th>
+                                    <th>Quantité</th>
+
+                                    <th>Total</th>
+                                    {#                                <th>Actions</th>#}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for element in elements %}
+                                    <tr >
+                                        <td><img src="{{ vich_uploader_asset(element.produit.produits) }}" alt=""  height="100px"></td>
+                                        <td style="vertical-align:middle">
+                                            {% if element.produit.produits.Categorie.libelle =='abonnement' %}
+                                                Abonnement version {{ element.produit.produits.Nom  }} ( {{  element.produit.dure}} ) mois
+                                            {% endif %}
+                                            {% if element.produit.produits.Categorie.libelle =='parution' %}
+                                                Parution {{ element.produit.produits.Nom }} <br>
+                                                ({{ element.produit.libelle }})
+                                            {% endif %}
+
+                                        </td>
+                                        <td style="vertical-align:middle">{{ element.produit.Prix |number_format(0, ' ', ' ') }} FCfa </td>
+                                        <td style="vertical-align:middle" >{{ element.quantite }} </td>
+
+                                        <td style="vertical-align:middle">{{ (element.produit.Prix * element.quantite) |number_format(0, ' ', ' ') }} FCFA</td>
+                                        {#                                <td> su</td>#}
+                                    </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td colspan="4" align="right">Total: </td>
+                                    <td style="vertical-align:middle" >{{total |number_format(0, ' ', ' ') }} FCFA</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <div>
+                                            <a href="{{ path('commande_chechkout') }}" class="btn abonnement-link abonnement--premium btn-cart">Proceder au paiement</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <h2> Oups ! votre panier est vide</h2>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

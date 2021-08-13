@@ -1,0 +1,99 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block stylesheet %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/datatables.css') }}">
+    <style>
+        .imgthumb {
+            width: 52px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+    </style>
+{% endblock %}
+{% block  content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-10 offset-md-1">
+                <div class="card">
+                                        <div class="card-header">
+                                            <h5>Liste des produits </h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                                        </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="basic-1_wrapper" class="dataTables_wrapper no-footer">
+                                <table class="table display dataTable no-footer" id="basic-1">
+                                    <thead>
+                                    <tr>
+
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                        <th>Prix</th>
+
+                                        <th>Date</th>
+
+                                        <th>actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for produit in produits %}
+                                        <tr>
+                                            <td><img src="{{ vich_uploader_asset(produit) }}" alt="" height="64px" class="text-center">
+                                                </td>
+                                            <td> <b>{{ produit.Nom }}</b></td>
+                                            <td>{{ produit.categorie.libelle }}</td>
+                                            <td>{{ produit.description }}</td>
+                                            <td>{{ produit.Prix }} FCFA</td>
+
+                                            <td>{{ produit.Date ? produit.Date|date('Y-m-d') : '' }}</td>
+                                            {#                <td>{{ produit.CreatedAt ? produit.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+                                            {#                <td>{{ produit.UpdatedAt ? produit.UpdatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+                                            {#                <td>{{ produit.featured ? 'Yes' : 'No' }}</td>#}
+                                            {#                <td>{{ produit.disponible ? 'Yes' : 'No' }}</td>#}
+                                            {#                <td>{{ produit.VersionPapier ? 'Yes' : 'No' }}</td>#}
+                                            {#                <td>{{ produit.VersionNumerique ? 'Yes' : 'No' }}</td>#}
+                                            <td>
+{#                                                <a href="{{ path('admin_produits_show', {'id': produit.id}) }}">show</a>#}
+{#                                                <a href="{{ path('admin_produits_edit', {'id': produit.id}) }}">Modifier</a>#}
+{#                                                <a href="{{ path('admin_produits_edit', {'id': produit.id}) }}">Supprimer</a>#}
+                                                <button class="btn btn-danger btn-xs" type="button" data-original-title="btn btn-danger btn-xs" title="" data-bs-original-title=""><a href="{{ path('admin_produits_edit', {'id': produit.id}) }}" style="color: #ffffff; font-size: 11px">Supprimer</a></button>
+                                                <button class="btn btn-success btn-xs"  type="button" data-original-title="btn btn-danger btn-xs" title="" data-bs-original-title="">  <a href="{{ path('admin_produits_edit', {'id': produit.id}) }}" style="color: #ffffff; font-size: 11px">Modifier</a></button>
+                                            </td>
+                                        </tr>
+
+
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="7">Pas de produits !</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <a class="btn btn-outline-success m-r-10 m-t-25" href="{{ path('admin_produits_new') }}">
+                                    <i class="fa fa-plus me-1"></i>Ajouter un produit
+                                </a>
+                                {#                                <button class="btn btn-success m-r-10 m-t-25" type="button" title="" data-bs-original-title="">#}
+
+                                {#                                </button>#}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('BackEnd/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('BackEnd/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+{% endblock %}

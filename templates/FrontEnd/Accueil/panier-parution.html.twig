@@ -1,0 +1,280 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+    {#    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/panier.css') }}">#}
+    <style>
+        .w-xl-40 {
+            width: 40% !important;
+        }
+        .panier-header {
+            font-family: "urwgrotesk_condensed_bold";
+            font-size: 40px;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+        .h-auto {
+            height: auto !important;
+        }
+        .shadow-none {
+            box-shadow: none !important;
+        }
+        .border-0 {
+            border: 0 !important;
+        }
+        .w-lg-15 {
+            width: 15% !important;
+        }
+        .btn-outline-secondary:hover {
+            color: #fff;
+            background-color: #77838f;
+            border-color: #77838f;
+        }
+        .btn-icon {
+            position: relative;
+            line-height: 0;
+            font-size: 1rem;
+            width: 3.125rem;
+            height: 3.125rem;
+            padding: 0;
+        }
+        .btn-icon.btn-xs {
+            font-size: 0.75rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+        .w-md-auto {
+            width: auto !important;
+        }
+        .text-gray-32 {
+            color: #a7a7a7;
+        }
+        .font-size-26 {
+            font-size: 1.62488rem;
+        }
+.btncontinue {
+    background-color: #ec1d25;
+    border: .1rem solid #ec1d25;
+    color: white;
+    /*font-size: 13px;*/
+}
+.btncontinue:hover{
+    color: #ec1d25;
+}
+        /*.btn-icon__inner {*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    -webkit-transform: translate(-50%, -50%);*/
+        /*    transform: translate(-50%, -50%);*/
+        /*}*/
+
+        .btn-icon__inner-bottom-minus {
+            /*top: 80%;*/
+        }
+
+    </style>
+{% endblock %}
+{% block maincontent %}
+    <section class="blog_area section-padding" style=" padding-top: 60px !important; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if elements|length > 0 %}
+                                <h2 class="panier-header"> Votre Panier</h2>
+                                <div class="cart-table">
+                                    <form class="mb-4" action="#" method="post">
+                                        <table class="table table-striped" cellspacing="0">
+                                            <thead>
+                                            <tr style="background-color: #ec1d25; color: white">
+                                                <th class="product-remove">&nbsp;</th>
+                                                <th class="product-thumbnail" style=" width: 15% !important;">&nbsp;</th>
+                                                <th class="product-name">Produit</th>
+                                                <th class="product-price">Prix</th>
+                                                <th class="product-quantity w-lg-15">Quantité</th>
+                                                <th class="product-subtotal">Total</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for element in elements %}
+                                                <tr class="">
+                                                    <td class="text-center">
+
+                                                        <a href="{{ path('cart_delete', { 'id': element.produit.id }) }}" class="text-gray-32 font-size-26">×</a>
+                                                    </td>
+                                                    <td class="d-none d-md-table-cell">
+                                                        <img src="{{ vich_uploader_asset(element.produit.produits) }}" alt="" height="100px">
+                                                    </td>
+
+                                                    <td data-title="Produit" style="vertical-align:middle">
+                                                    <span class="text-gray-90">
+
+                                                        {% if element.produit.produits.Categorie.libelle =='parution' %}
+                                                            Parution {{ element.produit.produits.Nom }}
+                                                            <span> {{  element.produit.libelle }}</span>
+                                                        {% endif %}
+                                                        {% if element.produit.produits.Categorie.libelle =='abonnement' %}
+
+                                                            Abonnement version {{ element.produit.produits.Nom }}
+                                                            ({{ element.produit.dure }} mois)
+
+                                                        {% endif %}
+                                                    </span>
+                                                        <br>
+
+                                                    </td>
+
+                                                    <td data-title="Prix" style="vertical-align:middle">
+                                                        <span class="">{{ element.produit.Prix|number_format(0, ' ', ' ')  }} FCfa</span>
+                                                    </td>
+
+                                                    <td data-title="Quanité" style="vertical-align:middle">
+                                                        <span class="sr-only">Quantity</span>
+                                                        <!-- Quantity -->
+                                                        <div class="border rounded-pill py-1 width-122 w-xl-80 px-3 border-color-1">
+                                                            <div class="js-quantity row align-items-center">
+                                                                <div class="col">
+                                                                    <input class="js-result form-control h-auto border-0 rounded p-0 shadow-none" type="text" value="{{ element.quantite }}">
+                                                                </div>
+                                                                <div class="col-auto pr-1">
+                                                                    <a class="js-minus btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="{{ path('cart_remove', { 'id': element.produit.id }) }}">
+                                                                        <small class="fas fa-minus btn-icon__inner"></small>
+                                                                    </a>
+                                                                    <a class="js-plus btn-icon btn-xs btn-outline-secondary rounded-circle border-0" href="{{ path('cart_add', { 'id': element.produit.id }) }}">
+                                                                        <small class="fas fa-plus btn-icon__inner"></small>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Quantity -->
+                                                    </td>
+
+                                                    <td data-title="Total" style="vertical-align:middle">
+                                            <span class="">{{ (element.produit.Prix * element.quantite)|number_format(0, ' ', ' ') }}
+                                            FCFA</span>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td colspan="5" style="text-align: right">
+                                                    Total:
+                                                </td>
+                                                <td>
+                                                    {{ total |number_format(0, ' ', ' ') }} FCFA
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="6" class="border-top space-top-2 justify-content-center">
+                                                    <div class="pt-md-3">
+                                                        <div class="d-block d-md-flex flex-center-between">
+                                                            <div class="mb-3 mb-md-0 w-xl-40">
+
+                                                            </div>
+                                                            <div class="d-md-flex text-right">
+                                                                <a href="#" class="abonnement-link abonnement--premium  btncontinue ml-md-2 px-5 px-md-4 ml-10  d-md-inline-block">Poursuivre mes achats</a>
+                                                                <a href="{{ path('commande_panier_login') }}" class="abonnement-link abonnement--premium  ml-md-2 px-5 px-md-4   d-md-inline-block">Valider la commande</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+
+                                {% else %}
+                                <h3 class="panier-header text-center"> Oups!  Votre panier est vide! </h3>
+                            {% endif %}
+
+{#                            <table class="table">#}
+{#                                <thead>#}
+{#                                <tr>#}
+{#                                    <th></th>#}
+{#                                    <th>Produit</th>#}
+{#                                    <th>Prix</th>#}
+{#                                    <th>Quantité</th>#}
+{#                                    <th></th>#}
+{#                                    <th>Total</th>#}
+{#                                    <th>Actions</th>#}
+{#                                </tr>#}
+{#                                </thead>#}
+{#                                <tbody>#}
+{#                                {% for element in elements %}#}
+{#                                    <tr>#}
+{#                                        <td>#}
+{#                                            <img src="{{ vich_uploader_asset(element.produit) }}" alt="" height="100px">#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                            Parution {{ element.produit.Nom }}#}
+
+{#                                        </td>#}
+{#                                        <td>{{ element.produit.Prix }} FCfa</td>#}
+{#                                        <td>#}
+{#                                    <span class="input-group-btn">#}
+{#	                  <button type="button" class="btn btn-default btn-number">−</button>#}
+{#	                </span>#}
+{#                                            {{ element.quantite }}#}
+{#                                            <span class="input-group-btn">#}
+{#	                  <button type="button" class="btn btn-default btn-number">−</button>#}
+{#	                </span>#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                            <a href="{{ path('cart_remove', { 'id': element.produit.id }) }}"#}
+{#                                               class="btn-danger btn-sm" role="button">#}
+{#                                                <i class="fas fa-minus"></i>#}
+{#                                            </a>#}
+
+{#                                            <a href="{{ path('cart_add', {'id' : element.produit.id }) }}"#}
+{#                                               class="btn-success btn-mx-2">#}
+{#                                                <i class="fas fa-cart-plus"></i>#}
+{#                                            </a>#}
+
+
+{#                                        </td>#}
+{#                                        <td>{{ (element.produit.Prix * element.quantite)|number_format(0, ' ', ' ') }}#}
+{#                                            FCFA#}
+{#                                        </td>#}
+{#                                        <td>#}
+{#                                            <a href="{{ path('cart_delete', { 'id': element.produit.id }) }}"#}
+{#                                               class="btn-danger btn-sm" role="button">#}
+{#                                                <i class="fas fa-trash"></i>#}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    </tr>#}
+{#                                {% endfor %}#}
+{#                                <tr>#}
+{#                                    <td colspan="5" style="text-align: right">#}
+{#                                        Total:#}
+{#                                    </td>#}
+{#                                    <td>#}
+{#                                        {{ total |number_format(0, ' ', ' ') }} FCFA#}
+{#                                    </td>#}
+{#                                </tr>#}
+{#                                <tr>#}
+{#                                    <td colspan="6">#}
+{#                                        <div>#}
+{#                                            <a href="{{ path('commande_panier_login') }}"#}
+{#                                               class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-none d-md-inline-block">Confirmer#}
+{#                                                ma commande</a>#}
+{#                                        </div>#}
+{#                                    </td>#}
+{#                                </tr>#}
+{#                                </tbody>#}
+{#                            </table>#}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block maincontent %}
+    <section class="blog_area section-padding">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="blog_left_sidebar">
+                        {% block leftcontent %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog_right_sidebar">
+                        <aside style="margin-bottom: 30px">
+                            <div class="trending-top ">
+
+                                <div class="weekly3-news-area pt-0 pb-0">
+                                    <div class="container">
+                                        <div class="weekly3-wrapper">
+                                            <div class="row">
+                                                <div class="col-lg-12" style="padding: 0px">
+                                                    <div class="slider-wrapper">
+                                                        <!-- Slider -->
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="weekly3-news-active-jdd dot-style d-flex">
+                                                                    {% for slide in recents.getSliders %}
+                                                                        <div class="weekly3-single">
+                                                                            <div class="trend-top-img">
+                                                                                <img src="{{ vich_uploader_asset(slide)}}"
+                                                                                     alt="">
+                                                                            </div>
+
+                                                                        </div>
+                                                                    {% endfor %}
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Rubriques</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="{{ path('front_categorie_articles_index',{'slug': 'le-dit-trop'}) }}" class="d-flex">
+                                        <p>Le Dit Trop</p>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_categorie_articles_index',{'slug': 'impoli-tics'}) }}" class="d-flex">
+                                        <p>Impoli- Tics</p>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_categorie_articles_index',{'slug': 'canardage'}) }}" class="d-flex">
+                                        <p>Canardage</p>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_categorie_articles_index',{'slug': 'beaux-coups-de-culture'}) }}" class="d-flex">
+                                        <p>Beaux coups de culture</p>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('front_categorie_articles_index',{'slug': 'nos-crocs-niquent'}) }}" class="d-flex">
+                                        <p>Nos Crocs Niquent</p>
+
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('accueil_achives_parutions') }}" class="d-flex">
+                                        <p>Nos Archives</p>
+
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Articles Récents</h3>
+                            {% for article in recents.getarticlesRecents %}
+                                <div class="media post_item">
+                                    <img src="{{ vich_uploader_asset(article) }}" alt="{{article.titre}}"  height="45px">
+                                    <div class="media-body">
+                                        <a href="{{ path('front_articles_show',{'rubrique': article.categories.slug, 'Slug': article.slug}) }}">
+                                            <h3>{{article.titre | slice(0,22) }}...</h3>
+                                        </a>
+                                        <p> {{ article.createdAt |format_datetime('full', 'none', locale='fr') }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+                        </aside>
+                        <aside style=" padding-bottom: 15px;">
+                            <img src="{{ asset('FrontEnd/assets/images/pub/pub-ddj-plus-d-afrique.jpg') }}" alt="">
+                        </aside>
+
+                        <aside style=" padding-bottom: 15px;">
+                            <img src="{{ asset('FrontEnd/assets/images/Nous-soutenir-ddj-1.jpg')}}" alt="">
+                        </aside>
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title-news">Newsletter</h4>
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter email'" placeholder='Mon email' required>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">S'inscrire
+                                </button>
+                            </form>
+                        </aside>
+                        <aside style=" padding-bottom: 15px;">
+                            <img src="{{ asset('FrontEnd/assets/images/Nous-soutenir-ddj.jpg')}}" alt="">
+                        </aside>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

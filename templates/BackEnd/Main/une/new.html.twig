@@ -1,0 +1,61 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h3>La une de la semaine</h3>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ path('TB_index') }}">                                       <i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Une</li>
+                        <li class="breadcrumb-item active">Ajouter</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('BackEnd/Main/une/_form.html.twig') }}
+
+
+{% endblock %}
+{% block javascript %}
+<script>
+    var $preview =  $('#une_ImagesDeLaUne_file');
+
+    $preview.change( function() {
+        if (input.files) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.preview')
+                    .attr('src', e.target.result)
+                    .height(100)
+            };
+            reader.readAsDataURL(input.files);
+            alert(input.files)
+        }
+    })
+    $('#une_ImagesDeLaUne_file').on('change ' , function () {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.preview')
+                        .attr('src', e.target.result)
+                        .height(100)
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    })
+
+</script>
+{% endblock %}

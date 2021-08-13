@@ -1,0 +1,56 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block  content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Locky </h5><span>mise a jour de la lokysphers</span>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                       
+{#                        <div class="mb-3">#}
+{#                            {{ form_row(form.titre) }}#}
+{#                        </div>#}
+                        <div class="mb-3">
+                            {{ form_row(form.images) }}
+                        </div>
+                        <button class="btn btn-outline-success">{{ button_label|default('Save') }}</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-offset-md-1">
+                <div class="card">
+                    
+                    {# <div class="card-header"> #}
+
+                    {# </div> #}
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                {% for loky in tousloky %}
+                                    <div class="col-md-3">
+                                        <img src="{{ vich_uploader_asset (loky) }}" alt="" class="img-fluid">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

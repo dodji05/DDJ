@@ -1,0 +1,59 @@
+{% apply inline_css(source('@styles/bootstrap.min.css')) %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="alert alert-success" role="alert">
+                    Confirmation de commandes
+                </div>
+                <table class="table table-bordered">
+                    <tr>
+                        <td> Nom : {{ client.prenom ~' ' ~ client.nom|upper}}</td>
+                        <td> Contact  : {{  client.telephone ~' / ' ~ client.email}}</td>
+                        <td> Date de l'achat  : {{   commande.DateCommande | date('d-m-Y') }}</td>
+                    </tr>
+                </table>
+                <br>
+
+                <b> Détails du reçu n°{{ commande.id }}</b>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set total = 0 %}
+                    {% for ligne in commande.lignesCommandes %}
+                        <tr>
+                            <td>
+                                {% if ligne.variant.produits.Categorie.libelle =='abonnement' %}
+                                    Abonnement version {{ ligne.variant.produits.Nom  }} ( {{  ligne.variant.dure}} ) mois
+                                {% endif %}
+                                {% if ligne.variant.produits.Categorie.libelle =='parution' %}
+                                    Parution {{ ligne.variant.produits.nom }} ({{ ligne.variant.libelle }})
+                                {% endif %}
+                            </td>
+                            <td>{{ ligne.quantite }}</td>
+                            <td>{{ ligne.Prix }} FCFA</td>
+                            <td> {{ (ligne.quantite * ligne.Prix) |number_format(0, ' ', ' ') }}
+                                {% set total = total + (ligne.quantite * ligne.Prix)  %}
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3"> TOTAL : </td>
+                        <td>  {{ total |number_format(0, ' ', ' ') }} FCFA</td>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endapply %}

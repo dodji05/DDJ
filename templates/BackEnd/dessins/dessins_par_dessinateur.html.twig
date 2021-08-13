@@ -1,0 +1,31 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block  content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>{{ dessinateur.nom}} </h5><span>Les dessins de {{ dessinateur.nom }}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                        {% for dessin in auteur %}
+                            <div class="col-md-3">
+                                <img src="{{ vich_uploader_asset (dessin) }}" alt="" class="img-fluid">
+
+                            </div>
+                        {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

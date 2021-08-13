@@ -1,0 +1,50 @@
+<!-- End Weekly-News -->
+<section>
+    <div class="container mb-30" style="background: #f1f1f0; margin-top: 35px">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="numero-semaine_title_header"> Achetez un numéro </h1>
+            </div>
+        </div>
+
+        <div class="row js-content">
+            {% for parution in parutions %}
+                <div class="col-md-3 align-self-center parution-journal special-editions__item">
+                    <div class="parution-items">
+                        <img src="{{ vich_uploader_asset(parution)}}"
+                             alt="DDJ - parution {{ parution.nom }} du {{ parution.date |format_datetime('full', 'none', locale='fr') }}"
+                             srcset="{{ vich_uploader_asset(parution)}}" class="img-fluid">
+
+                    </div>
+                    <div class="parution-details">
+                        <div class="parutions-details-numero">
+                            <a href="{{ path('accueil_achat_parution', {'Nom': parution.nom}) }}"> Parution {{ parution.nom }}</a>
+                        </div>
+
+                        <div class="parutions-details-price">
+                            {{ parution.prix }} FCFA / 0,5€
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+
+
+
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="edito-links" style="margin-bottom: 30px">
+
+                    <a class="abonnement-link abonnement--premium button-edito" href="{{ path('accueil_boutique_parutions') }}"> Voir tous les numéros</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

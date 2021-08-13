@@ -1,0 +1,60 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+
+{% block title %}
+    DDJ : Achetez un numéro du  DECHAINE DU JEUDI
+{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/cart.css') }}">
+
+{% endblock %}
+ {% block maincontent %}
+     <section class="blog_area section-padding" style=" padding-top: 0px !important; ">
+
+         <div class="container" >
+             <div class="row p-0">
+                 <div class="col-md-12">
+                     <section class="py-5">
+                         <div class="container px-4 px-lg-5 my-5" >
+                             <div class="row gx-4 gx-lg-5 align-items-center" style="background: #ffffff">
+                                 <div class="col-md-4 img-parution">
+                                     <img class="card-img-top mb-5 mb-md-0" src="{{ vich_uploader_asset(parution) }}" alt="DDJ - parution {{ parution.nom }}" /></div>
+                                 <div class="col-md-8">
+                                     <div class="small mb-1 small-week" > LA PARUTION DU </div>
+                                     <h1 class="display-5 fw-bolder"> {{ parution.date |format_datetime('full', 'none', locale='fr') }} - Numéro {{ parution.nom }} </h1>
+{#                                     <div>#}
+                                         <div class="fs-5">
+
+                                         <span class="label_prix">{{ parution.prix }} Fcfa / 0,5 €</span>
+                                     </div>
+                                     <!--                                    <p class="lead produit-details">Parution du N° 148 du 03 Juin 2021</p>-->
+                                     <br>
+
+                                     <div class='d-inline-flex'>
+
+                                        {% for variant in parution.produitsVariants %}
+                                            {% if variant.libelle =='Version papier' %}
+                                                <a href="{{ path('ajout_panier',{id : variant.id}) }}" class="abonnement-link abonnement--premium btn-cart mr-10" type="button" style="font-size: 15px!important; margin-right: 15px !important;">
+                                                    Acheter la version papier
+                                                </a>
+                                            {% endif %}
+                                            {% if variant.libelle =='Version numérique' %}
+                                                <a href="{{ path('ajout_panier',{id : variant.id}) }}" class="contact-us abonnement-link  btn-cart" type="button" style="font-size: 15px!important;">
+                                                     Acheter la version numérique
+                                                </a>
+                                            {% endif %}
+
+                                         {%  endfor %}
+                                         &nbsp;&nbsp;
+
+
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </section>
+                 </div>
+
+             </div>
+         </div>
+     </section>
+ {% endblock %}

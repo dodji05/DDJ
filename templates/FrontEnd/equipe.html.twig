@@ -1,0 +1,148 @@
+{% extends 'FrontEnd/base_page_interieur.html.twig' %}
+{% block stylesheet %}
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css'>
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/team.css') }}">
+{% endblock %}
+ {% block leftcontent %}
+     <div class="container bootdey">
+         <div class="row align-items-center">
+             <div class="col-12 d-flex text-center align-items-center justify-content-center" style="background-image: url('{{ asset('FrontEnd/assets/images/Nos-desinateurs.jpg') }}'); height: 146px">
+                 <h3 style="color:#ffffff; text-transform: uppercase" class="align-items-center justify-content-center auteur-head" >
+                     Ceux qui font le DDJ
+                 </h3>
+                 <!--                                <div class="section-title mb-4 pb-2">-->
+                 <!--                                    <h4 class="title mb-4 mt-30"> L'equipe du déchainé du jeudi </h4>-->
+
+                 <!--                                </div>-->
+             </div><!--end col-->
+         </div><!--end row-->
+         <!-- LES DESSINATEUR-->
+         <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <h3 class="authors-head">LES DESSINATEURS</h3>
+                 </div>
+             </div>
+         </div>
+
+         <div class="row js-content-team">
+             {% for dessinateurs in membres %}
+             {% if dessinateurs.role =="dessinateurs" %}
+ <a href="{{ path('accueil_dessin_dessinateurs',{'nom': dessinateurs.nom}) }}">
+                 <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+                     <div class="team text-center rounded p-3 py-4">
+                         <img src="{{ vich_uploader_asset(dessinateurs) }}" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
+                         <div class="content mt-3">
+                             <h4 class="title mb-0">{{ dessinateurs.nom }}</h4>
+                             <ul class="list-unstyled mt-3 social-icon social mb-0">
+                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-facebook" title="Facebook"></i></a></li>
+                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-instagram" title="Instagram"></i></a></li>
+                             </ul><!--end icon-->
+                         </div>
+                     </div>
+                 </div>
+</a>
+             {% endif %}
+             {% endfor %}
+             <!--end col-->
+
+
+{#             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2 offset-lg-1">#}
+{#                 <div class="team text-center rounded p-3 py-4">#}
+{#                     <img src="assets/images/Equipes/Dessinateurs/Dessinateurs-ddj-David-Gouzil.jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">#}
+{#                     <div class="content mt-3">#}
+{#                         <h4 class="title mb-0">David</h4>#}
+
+{#                         <ul class="list-unstyled mt-3 social-icon social mb-0">#}
+{#                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-facebook" title="Facebook"></i></a></li>#}
+{#                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-instagram" title="Instagram"></i></a></li>#}
+
+{#                         </ul><!--end icon-->#}
+{#                     </div>#}
+{#                 </div>#}
+{#             </div>#}
+
+
+             <!--end col-->
+         </div><!--end row-->
+         <!-- FIN DESSINATEURS-->
+
+         <!--                        LES REACTEURS-->
+         <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <h3 class="authors-head">LES REDACTEURS</h3>
+                 </div>
+             </div>
+         </div>
+
+         <div class="row js-content-team">
+             {% for dessinateurs in membres %}
+                 {% if dessinateurs.role =="redacteurs" %}
+                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+                         <div class="team text-center rounded p-3 py-4">
+                             <img src="{{ vich_uploader_asset(dessinateurs) }}" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
+                             <div class="content mt-3">
+                                 <h4 class="title mb-0">{{ dessinateurs.nom }}</h4>
+                                 <ul class="list-unstyled mt-3 social-icon social mb-0">
+                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-facebook" title="Facebook"></i></a></li>
+                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-instagram" title="Instagram"></i></a></li>
+                                 </ul><!--end icon-->
+                             </div>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
+{#             <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2 offset-lg-4">#}
+{#                 <div class="team text-center rounded p-3 py-4">#}
+{#                     <img src="assets/images/Equipes/Redacteurs/Rédacteurs-ddj-RIM.jpg" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">#}
+{#                     <div class="content mt-3">#}
+{#                         <h4 class="title mb-0">RIM</h4>#}
+
+{#                         <ul class="list-unstyled mt-3 social-icon social mb-0">#}
+{#                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-facebook" title="Facebook"></i></a></li>#}
+{#                             <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-linkedin" title="Linkedin"></i></a></li>#}
+
+{#                         </ul><!--end icon-->#}
+{#                     </div>#}
+{#                 </div>#}
+{#             </div>#}
+
+
+             <!--end col-->
+         </div><!--end row-->
+         <!--                        FIN REDACTEURS-->
+
+         <!--                        LES CHRONIQUEURS-->
+         <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <h3 class="authors-head">LES CROCS NIQUEURS</h3>
+                 </div>
+             </div>
+         </div>
+
+         <div class="row d-flex js-content-team">
+
+             {% for dessinateurs in membres %}
+                 {% if dessinateurs.role =="crocsniqueurs" %}
+                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+                         <div class="team text-center rounded p-3 py-4">
+                             <img src="{{ vich_uploader_asset(dessinateurs) }}" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
+                             <div class="content mt-3">
+                                 <h4 class="title mb-0">{{ dessinateurs.nom }}</h4>
+                                 <ul class="list-unstyled mt-3 social-icon social mb-0">
+                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-facebook" title="Facebook"></i></a></li>
+                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i class="mdi mdi-instagram" title="Instagram"></i></a></li>
+                                 </ul><!--end icon-->
+                             </div>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
+
+
+         </div><!--end row-->
+         <!--                        FIN LES CHRONIQUES-->
+     </div>
+ {% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_admin.html.twig' %}
+{% endblock %}
+{% block  content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden">
+                <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-database">
+                                <ellipse cx="12" cy="5" rx="9" ry="3">
+                                </ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="media-body"><span class="m-0">Vente</span>
+                            <h4 class="mb-0 counter">{{ ventes |number_format(0, ' ', ' ') }} FCFA</h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-database icon-bg">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden">
+                <div class="bg-secondary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
+                        <div class="media-body"><span class="m-0">Clients</span>
+                            <h4 class="mb-0 counter">{{ clients |number_format(0, ' ', ' ') }}</h4><i class="icon-bg"
+                                                                          data-feather="shopping-bag"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden">
+                <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
+                        <div class="media-body"><span class="m-0">Abonnés</span>
+                            <h4 class="mb-0 counter">{{ abonnes |number_format(0, ' ', ' ') }}</h4><i class="icon-bg"
+                                                                          data-feather="message-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3 col-lg-6">
+            <div class="card o-hidden">
+                <div class="bg-primary b-r-4 card-body">
+                    <div class="media static-top-widget">
+                        <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
+                        <div class="media-body"><span class="m-0">Visiteurs</span>
+                            <h4 class="mb-0 counter">{{ nbreVisite |number_format(0, ' ', ' ')}}</h4><i class="icon-bg"
+                                                                             data-feather="message-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-sm-6 col-xl-6 col-lg-6">
+            <div class="card">
+                <div class="card-header p-20">
+                    <h5>Nouveaux clients</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <th>Nom</th>
+                        <th></th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for client in nouveaux %}
+                            <tr>
+                                <td>
+                                    <strong> {{ client.prenom ~" "~ client.nom }}</strong> <br>
+                                    <div style="color: #ababab;">{{ client.email ~ " / " ~ client.telephone }}</div>
+                                </td>
+                                <td></td>
+                                <td>
+                                <a class="btn btn-pill btn-light btn-air-light" href="{{ path('admin_commandes_par_clients',{'id': client.id}) }}"> Afficher </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-6 col-lg-6">
+          <div class="card">
+                <div class="card-header p-20">
+                    <h5>Nouveaux achats</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <th style="color: #ababab;">Commande</th>
+{#                        <th style="color: #ababab;">Produits</th>#}
+                        <th style="color: #ababab;">Total</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        {% for ligne in achats %}
+                                <tr>
+                                    <td>
+                                        <strong> {{ ligne.user.prenom ~" "~ ligne.user.nom }}</strong> <br>
+                                        <div style="color: #ababab;">{{ ligne.user.email ~ " / " ~ ligne.user.telephone }}</div>
+                                    </td>
+{#                                    <td>#}
+{#                                        {% set qt = 0 %}#}
+
+{#                                        {% for item in ligne.lignesCommandes %}#}
+{#                                            {% set qt = qt+ item.quantite %}#}
+
+{#                                        {% endfor %}#}
+
+
+
+
+{#                                        {{ qt }}</td>#}
+                                    <td> {{ ligne.total|number_format(0, ' ', ' ') }}FCFA</td>
+                                    <td>
+                                        <a class="btn btn-pill btn-light btn-air-light"> Afficher </a>
+                                    </td>
+                                </tr>
+
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

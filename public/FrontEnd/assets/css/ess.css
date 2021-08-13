@@ -1,0 +1,158 @@
+.whats-news-area-jdd .single-follow .follow-us .follow-count, .about-area2 .single-follow .follow-us .follow-count, .contact-section .single-follow .follow-us .follow-count {
+    padding-left: 15px
+}
+
+.whats-news-area-jdd .single-follow .follow-us .follow-count span, .about-area2 .single-follow .follow-us .follow-count span, .contact-section .single-follow .follow-us .follow-count span {
+    color: #232323;
+    font-size: 14px;
+    font-weight: 500
+}
+
+.whats-news-area-jdd .single-follow .follow-us .follow-count p, .about-area2 .single-follow .follow-us .follow-count p, .contact-section .single-follow .follow-us .follow-count p {
+    margin-bottom: 0;
+    line-height: 1;
+    font-size: 11px
+}
+
+.whats-news-area-jdd .news-poster img, .about-area2 .news-poster img, .contact-section .news-poster img {
+    width: 100%;
+    padding: 0 61px
+}
+
+.whats-news-area-jdd .most-recent-area, .about-area2 .most-recent-area, .contact-section .most-recent-area {
+    background: #fff;
+    padding: 30px 10px;
+    border-radius: 7px
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img, .about-area2 .most-recent-area .most-recent .most-recent-img, .contact-section .most-recent-area .most-recent .most-recent-img {
+    overflow: hidden;
+    position: relative
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img::before, .about-area2 .most-recent-area .most-recent .most-recent-img::before, .contact-section .most-recent-area .most-recent .most-recent-img::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    content: ""
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img img, .about-area2 .most-recent-area .most-recent .most-recent-img img, .contact-section .most-recent-area .most-recent .most-recent-img img {
+    width: 100%;
+    border-radius: 7px
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap {
+    position: absolute;
+    bottom: 0px;
+    left: 31px
+}
+
+@media (max-width: 575px) {
+    .whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap {
+        bottom: -2px;
+        left: 5px
+    }
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap span, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap span, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap span {
+    color: #ffff;
+    padding: 9px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1;
+    margin-bottom: 19px;
+    display: inline-block
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap h4, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap h4, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap h4 {
+    font-size: 16px
+}
+
+@media (max-width: 575px) {
+    .whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap h4, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap h4, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap h4 {
+        font-size: 15px
+    }
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap h4 a, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap h4 a, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap h4 a {
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.3
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent .most-recent-img .most-recent-cap p, .about-area2 .most-recent-area .most-recent .most-recent-img .most-recent-cap p, .contact-section .most-recent-area .most-recent .most-recent-img .most-recent-cap p {
+    color: #fff;
+    font-size: 12px
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single, .about-area2 .most-recent-area .most-recent-single, .contact-section .most-recent-area .most-recent-single {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-images img, .about-area2 .most-recent-area .most-recent-single .most-recent-images img, .contact-section .most-recent-area .most-recent-single .most-recent-images img {
+    border-radius: 6px
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt, .about-area2 .most-recent-area .most-recent-single .most-recent-capt, .contact-section .most-recent-area .most-recent-single .most-recent-capt {
+    padding-left: 18px
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt h4, .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4, .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt h4, .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4, .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 {
+        font-size: 15px
+    }
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt h4 a, .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4 a, .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 a {
+    font-weight: 500;
+    line-height: 1.4;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px
+}
+
+@media (max-width: 575px) {
+    .whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt h4 a, .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4 a, .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 a {
+        font-size: 14px
+    }
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt h4 a:hover, .about-area2 .most-recent-area .most-recent-single .most-recent-capt h4 a:hover, .contact-section .most-recent-area .most-recent-single .most-recent-capt h4 a:hover {
+    color: #ff2143
+}
+
+.whats-news-area-jdd .most-recent-area .most-recent-single .most-recent-capt p, .about-area2 .most-recent-area .most-recent-single .most-recent-capt p, .contact-section .most-recent-area .most-recent-single .most-recent-capt p {
+    color: #707b8e;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1
+}
+
+.whats-news-area-jdd .banner-one img, .about-area2 .banner-one img, .contact-section .banner-one img {
+    width: 100%
+}
+
+.whats-news-area-jdd .nav-tabs .nav-link, .about-area2 .nav-tabs .nav-link, .contact-section .nav-tabs .nav-link {
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 0;
+    margin: 0 10px
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .whats-news-area-jdd .nav-tabs .nav-link, .about-area2 .nav-tabs .nav-link, .contact-section .nav-tabs .nav-link {
+        margin-bottom: 10px
+    }
+}

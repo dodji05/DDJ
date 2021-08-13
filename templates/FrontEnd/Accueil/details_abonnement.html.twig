@@ -1,0 +1,66 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/cart.css') }}">
+
+{% endblock %}
+{% block maincontent %}
+
+    <div class="container">
+        <div class="row p-0">
+            <div class="col-md-12">
+                <section class="py-5">
+                    <div class="container px-4 px-lg-5 my-5">
+                        <div class="row gx-4 gx-lg-5 align-items-center" style="background: #ffffff">
+                            <div class="col-md-4 img-parution">
+                                <img class="card-img-top mb-5 mb-md-0"
+                                     src="{{ asset('FrontEnd/assets/images/abonnement/Le-dechaine-du-jeudi-papier-on.png')}}"/></div>
+                            <div class="col-md-8">
+                                <div class="small mb-1 small-week"></div>
+                                <h1 class="abonnement-title fw-bolder mt-30"> ABONNEMENT AU DÉCHAÎNÉ DU JEUDI VERSION {{ produit.nom}} </h1>
+                                <div class="fs-5 mb-5">
+
+                                </div>
+                                <div class="lead produit-details">
+                                    <form name="form" action="{{ path('accueil_abonnement_etape1') }}" method="post">
+
+                                        <ul>
+                                            {% for item in produit.produitsVariants %}
+                                                <li>
+                                                    <input type="radio" id="{{ item.id }}" name="abonnement" value="{{ item.id }}"
+                                                    >
+                                                    <label for="{{ item.id }}">{{ item.prix|number_format(0, ' ', ' ') }} FCFA abonnement {{ item.dure }} mois pour {{ item.nBreNumero }} numéros </label>
+                                                </li>
+                                            {% endfor %}
+
+
+
+                                        </ul>
+
+
+                               &nbsp;
+                                <div class='d-inline-flex'>
+
+                                    <button class="btn abonnement-link abonnement--premium btn-cart " type="submit"
+                                            style="font-size: 25px!important;">
+                                        <i class="bi-cart-fill me-1"></i>
+                                        Je m'abonne
+                                    </button> &nbsp;&nbsp;
+
+
+                                    <!--                                        <button class="btn btn-cart flex-shrink-0" type="button">-->
+                                    <!--                                            <i class="bi-cart-fill me-1"></i>-->
+                                    <!--                                            Acheter la version numérique-->
+                                    <!--                                        </button>-->
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

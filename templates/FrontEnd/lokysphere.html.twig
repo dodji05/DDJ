@@ -1,0 +1,77 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+
+{% block title %}
+    DDJ : L'univers de loky
+{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/cart.css') }}">
+    <link href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" rel="stylesheet"/>
+{% endblock %}
+ {% block maincontent %}
+     <section class="blog_area section-padding">
+         <div class="container">
+             <div class="row">
+                 <div class="container bootdey">
+                     <div class="row align-items-center">
+                         <div class="col-lg-8 d-flex text-center align-items-center justify-content-center offset-lg-2"
+                              style="background-image: url('{{ asset('FrontEnd/assets/images/Lokysphere/Lokysphere.jpg') }}'); height: 146px; background-size: cover; background-repeat: no-repeat;background-position: center; ">
+                             <h3 style="color:#ffffff; text-transform: uppercase"
+                                 class="align-items-center justify-content-center auteur-head">
+
+                             </h3>
+
+                         </div>
+                     </div>
+
+                 </div>
+
+             </div>
+
+             <div class="row mt-15">
+                 {% for loky in lokies %}
+                 <div class="col-md-3 mb-3">
+                     <a data-fancybox="gallery" href="{{ vich_uploader_asset(loky) }}">
+                         <img class="img-fluid" height="100%" src="{{ vich_uploader_asset(loky) }}">
+                     </a>
+                 </div>
+                 {% endfor %}
+
+             </div>
+
+{#             <div class="row mt-15">#}
+{#                 <div class="col-md-3">#}
+{#                     <a data-fancybox="gallery" href="assets/images/Lokysphere/Loky-10.jpg">#}
+{#                         <img class="img-fluid" src="assets/images/Lokysphere/Loky-10.jpg">#}
+{#                     </a>#}
+{#                 </div>#}
+{#                 <div class="col-md-3">#}
+{#                     <a data-fancybox="gallery" href="assets/images/Lokysphere/Loky-11.jpg">#}
+{#                         <img class="img-fluid" src="assets/images/Lokysphere/Loky-11.jpg">#}
+{#                     </a>#}
+{#                 </div>#}
+{#                 <div class="col-md-3">#}
+{#                     <a data-fancybox="gallery" href="assets/images/Lokysphere/Loky-13.jpg">#}
+{#                         <img class="img-fluid" src="assets/images/Lokysphere/Loky-13.jpg">#}
+{#                     </a>#}
+{#                 </div>#}
+{#                 <div class="col-md-3">#}
+{#                     <a data-fancybox="gallery" href="assets/images/Lokysphere/Loky-15.jpg">#}
+{#                         <img class="img-fluid" src="assets/images/Lokysphere/Loky-15.jpg">#}
+{#                     </a>#}
+{#                 </div>#}
+{#             </div>#}
+{#             <row class="row mt-15">#}
+{#                 <div class="col-md-3 m-t-15">#}
+{#                     <a data-fancybox="gallery" href="assets/images/Lokysphere/Loky-4.jpg">#}
+{#                         <img class="img-fluid" src="assets/images/Lokysphere/Loky-36.jpg">#}
+{#                     </a>#}
+{#                 </div>#}
+{#             </row>#}
+         </div>
+
+
+     </section>
+ {% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+{% endblock %}

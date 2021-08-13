@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Une{% endblock %}
+
+{% block body %}
+    <h1>Une</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ une.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ une.Titre }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ une.Numero }}</td>
+            </tr>
+            <tr>
+                <th>ImagesUne</th>
+                <td>{{ une.ImagesUne }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ une.date ? une.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_At</th>
+                <td>{{ une.CreatedAt ? une.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Update_At</th>
+                <td>{{ une.UpdateAt ? une.UpdateAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_by</th>
+                <td>{{ une.CreatedBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('une_index') }}">back to list</a>
+
+    <a href="{{ path('une_edit', {'id': une.id}) }}">edit</a>
+
+    {{ include('une/_delete_form.html.twig') }}
+{% endblock %}

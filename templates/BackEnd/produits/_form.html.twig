@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+
+<div class="mb-3">
+    {{ form_row(form.Nom) }}
+</div>
+<div class="mb-3">
+    {{ form_row(form.description) }}
+</div>
+<div class="mb-3">
+    {{ form_row(form.ImageFile) }}
+</div>
+<button class="btn btn-outline-success pull-right m-t-25">{{ button_label|default('Ajouter le produit') }}</button>
+{{ form_end(form) }}

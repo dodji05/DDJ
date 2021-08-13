@@ -1,0 +1,27 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        LaUne:
+            uri_prefix: '%app.path.la_une_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.la_une_images%'
+
+        Articles:
+            uri_prefix: '%app.path.articles%'
+            upload_destination: '%kernel.project_dir%/public%app.path.articles%'
+
+        Sliders:
+            uri_prefix: '%app.path.sliders%'
+            upload_destination: '%kernel.project_dir%/public%app.path.sliders%'
+
+        Equipe:
+            uri_prefix: '%app.path.equipes%'
+            upload_destination: '%kernel.project_dir%/public%app.path.equipes%'
+
+        Dessins:
+            uri_prefix: '%app.path.dessins%'
+            upload_destination: '%kernel.project_dir%/public%app.path.dessins%'
+
+        Produits:
+            uri_prefix: '%app.path.dessins%'
+            upload_destination: '%kernel.project_dir%/public%app.path.dessins%'

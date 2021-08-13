@@ -1,0 +1,142 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+    <style>
+        .max-width-100{
+            max-width:6.25rem}
+
+        .border {
+            border: 1px solid #e7eaf3 !important;
+        }
+        .border-color-1 {
+            border-color: #dddddd !important;
+        }
+
+        .border-color-2 {
+            border-top: 1px solid #e5c100;
+        }
+
+        .border-color-3 {
+            border-color: #ececec !important;
+        }
+        .panier-header {
+            font-family: "urwgrotesk_condensed_bold";
+            font-size: 40px;
+            margin-bottom: 20px;
+            margin-top: 15px;
+        }
+    </style>
+{% endblock %}
+{% block maincontent %}
+    <section class="blog_area section-padding" style=" padding-top: 60px !important; ">
+
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+            <div class="mb-5 mt-10">
+                <h2 class="text-center panier-header">Merci. Votre commande a été bien reçue.</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-2 mb-xl-0 col-xl-3 col-wd-3 border-left">
+                    <div class=" text-secondary font-size-16 mb-2 ">Numéro de commande :
+                    </div>
+                    <span class="font-weight-bold text-dark text-center ml-25">{{ lacommande.id }}</span>
+
+
+
+                </div>
+                <div class="col-md-6 mb-2 mb-xl-0 col-xl-3 col-wd-3 border-left">
+                    <div class=" text-secondary font-size-16 mb-2">Date :</div>
+                    <span class="font-weight-bold text-dark  text-center">{{ lacommande.dateCommande | date('d-m-Y') }}</span>
+                </div>
+                <div class="col-md-6 mb-2 mb-xl-0 col-xl-3 col-wd-3 border-left">
+                    <div class=" text-secondary font-size-16 mb-2">Total :</div>
+                    <span class=" font-weight-bold text-dark text-center">{{ total |number_format(0, ' ', ' ')  }}FCFA</span>
+                </div>
+                <div class="col-md-6 mb-2 mb-xl-0 col-xl-3 col-wd-3 border-left">
+                    <div class=" text-secondary font-size-16 mb-2 border-left">Client  :</div>
+                    <span class="font-weight-bold text-dark text-center">{{ client.prenom ~' ' ~ client.nom|upper}}</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row mt-10">
+                <div class="col-lg-12 order-lg-2 mb-7 mb-lg-0">
+                    <table class="table" cellspacing="0">
+                        <thead>
+                        <tr style="background-color: #ec1d25; color: white">
+                            <th class="product-thumbnail" style=" width: 15% !important;">&nbsp;</th>
+                            <th class="product-name">Produit</th>
+                            <th class="product-price">Prix</th>
+                            <th class="product-quantity w-lg-15">Quantité</th>
+                            <th class="product-subtotal">Total</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for element in commande %}
+                            <tr class="">
+
+                                <td class="d-none d-md-table-cell">
+                                    <a href="#"><img class="img-fluid max-width-100 p-1 border border-color-2" src="{{ vich_uploader_asset(element.variant.produits) }}" alt=" {{ element.variant.produits.Nom }}"></a>
+                                </td>
+
+                                <td data-title="Product" style="vertical-align:middle">
+                                 
+
+                                    {% if element.variant.produits.Categorie.libelle =='abonnement' %}
+                                        Abonnement version {{ element.variant.produits.Nom  }} ( {{  element.variant.dure}} ) mois
+                                    {% endif %}
+                                    {% if element.variant.produits.Categorie.libelle =='parution' %}
+                                        Parution {{ element.variant.produits.nom }} ({{ element.variant.libelle }})
+                                    {% endif %}
+
+                                </td>
+
+                                <td data-title="Price" style="vertical-align:middle">
+                                    <span class="">{{ element.Prix |number_format(0, ' ', ' ') }} FCFA</span>
+                                </td>
+
+                                <td data-title="Quantity"  style="vertical-align:middle">
+                                    <span class="sr-only">Quantité</span>
+                                    <!-- Quantity -->
+                                    <div class="">
+                                        <div class="js-quantity row align-items-center">
+                                            <div class="col">
+                                                {{ element.quantite }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- End Quantity -->
+                                </td>
+
+                                <td data-title="Total" style="vertical-align:middle">
+                                    <span class="">{{( element.Prix  * element.quantite)|number_format(0, ' ', ' ') }} FCFA</span>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+{#                        <tr>#}
+{#                            <td colspan="4" class="text-right product-price"> <span class="font-weight-bold text-dark text-center font-size-17">Livraison </span></td>#}
+{#                            <td>  <span class="font-weight-bold text-dark text-center font-size-16"> 500 </span></td>#}
+{#                        </tr>#}
+                        <tr>
+                            <td colspan="4" class="text-right product-price" style="font-size:26px"><span class="font-weight-bold text-dark text-center font-size-16"> Total </span></td>
+                            <td> <span class="font-weight-bold text-dark text-center font-size-16" style="color:red; font-size: 26px"> {{ (total)|number_format(0, ' ', ' ') }} FCFA</span></td>
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+             <span class="text-center" style="text-align: center; font-size:19px; margin-bottom:25px;font-family: 'proxima_nova_altbold', sans-serif"><a href="{{ path('app_login') }}" style="color:#000">   Connectez-vous  pour commencer la lecture </a> </span>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,131 @@
+<!-- Trending Area Start -->
+<div class="trending-area fix pt-25 gray-bg">
+    <div class="container">
+        <div class="trending-main">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Trending Top -->
+                    <div class="slider-active">
+                        <!-- Single -->
+                        <div class="single-slider">
+                            <div class="trending-top mb-30">
+                                <div class="trend-top-img trend-top-img-effect">
+{#                                    <img src="{{ vich_uploader_asset(une)|imagine_filter('laUnes') }}" alt="">#}
+                                    <img src="{{ asset('uploads/images/la-une/') }}{{ une.imagesUne }}" alt="">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Right content -->
+                <div class="col-lg-4">
+                    <!-- Trending Top -->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6 col-sm-6 order-sm-2">
+                            <div class="trending-top " style="margin-bottom: 10px">
+                                <!--                                    <div class="trend-top-img sans-effet">-->
+                                <!--                                        <img src="assets/images/laune/lire-et-diffusez-ddj.jpg" alt="">-->
+
+
+                                <!--                                    </div>-->
+                                <div class="weekly3-news-area pt-0 pb-0">
+                                    <div class="container">
+                                        <div class="weekly3-wrapper">
+                                            <div class="row">
+                                                <div class="col-lg-12" style="padding: 0px">
+                                                    <div class="slider-wrapper">
+                                                        <!-- Slider -->
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="weekly3-news-active-jdd dot-style d-flex">
+
+                                                                    {% for slide in slides %}
+                                                                        <div class="weekly3-single">
+                                                                            <div class="trend-top-img">
+                                                                                <img src="{{ vich_uploader_asset(slide)}}"
+                                                                                     alt="">
+                                                                            </div>
+
+                                                                        </div>
+                                                                    {% endfor %}
+
+{#                                                                    <div class="weekly3-single">#}
+{#                                                                        <div class="weekly3-img">#}
+{#                                                                            <img src="{{ asset('uploads/images/sliders/Lire-et-diffuser-le-dechaine-du-jeudi.jpg')}}"#}
+{#                                                                                 alt="">#}
+{#                                                                        </div>#}
+
+{#                                                                    </div>#}
+{#                                                                    <div class="weekly3-single">#}
+{#                                                                        <div class="weekly3-img">#}
+{#                                                                            <img src="{{ asset('uploads/images/sliders/Lire-et-diffuser-le-dechaine-du-jeudi-2.jpg')}}"#}
+{#                                                                                 alt="">#}
+{#                                                                        </div>#}
+
+{#                                                                    </div>#}
+{#                                                                    <div class="weekly3-single">#}
+{#                                                                        <div class="weekly3-img">#}
+
+{#                                                                            <img src=" {{ asset('uploads/images/sliders/Lire-et-diffuser-le-dechaine-du-jeudi-Claudine.jpg')}}"#}
+{#                                                                                 alt="">#}
+{#                                                                        </div>#}
+
+{#                                                                    </div>#}
+{#                                                                    <div class="weekly3-single">#}
+{#                                                                        <div class="weekly3-img">#}
+
+{#                                                                            <img src="{{ asset('uploads/images/sliders/Lire-et-diffuser-le-dechaine-du-jeudi-3.jpg')}}"#}
+{#                                                                                 alt="">#}
+{#                                                                        </div>#}
+
+{#                                                                    </div>#}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6 col-sm-6 order-sm-1">
+                            <div class="trending-top mb-30" style="background: #ffffff">
+                                <div class="trend-top-img">
+                                    <!--                                        <span class="bgg-jdd">DERNIERE PARUTION </span>-->
+                                    <!--                                        <h2 ><a href="latest_news.html">Jeudi 27 Mai 2021 NUMERO 147</a></h2>-->
+                                    <!--                                        <p class="text-center">-->
+
+                                    <!--                                            <a href="#"-->
+                                    <!--                                               class="button button-light button&#45;&#45;hard">Lire le journal en-->
+                                    <!--                                                numérique</a>-->
+                                    <!--                                        </p>-->
+                                    <a href="{{ path('accueil_derniers_parution') }}">
+                                        <img src="{{ asset('FrontEnd/assets/images/derniere-parution-ddj.png')}}" alt="">
+                                    </a>
+                                    <div class="trend-top-cap trend-top-cap2">
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+{#                        <div class="col-lg-12 col-md-6 col-sm-6 order-sm-3">#}
+{#                            <a href="{{ path('accueil_derniers_parution') }}">#}
+{#                                <img src="{{ asset('uploads/images/pub/atelier-dessin-pub-ddj.jpg')}}" alt="">#}
+{#                            </a>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Trending Area End -->

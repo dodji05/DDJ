@@ -1,0 +1,47 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block stylesheet %}
+    <style>
+        .parution-items {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .parutions-details-numero {
+
+            /*margin: 15px;*/
+        ;
+            font-size: 12px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+
+{% endblock %}
+{% block nemu %}
+    {% include 'BackEnd/partials/_nemu_clients.html.twig' %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10 offset-md-1">
+            <div class="card">
+                <div class="card-header">
+                  </div>
+                <div class="card-body p-0">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center>
+                                    <iframe frameborder="0"  width="1200" height="1000" src="{{ parution.UrlLiseuse }}" scrolling="no" marginwidth="0" marginheight="0" allowFullScreen></iframe>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

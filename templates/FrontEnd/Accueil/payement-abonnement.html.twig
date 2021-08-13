@@ -1,0 +1,55 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+{#    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/panier.css') }}">#}
+{% endblock %}
+{% block maincontent %}
+    <section class="blog_area section-padding" style=" padding-top: 60px !important; ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2> Votre commande</h2>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Produit</th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                                <th>Total</th>
+{#                                <th>Actions</th>#}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <img src="{{ abonnement.typeabonnement.images }}" alt="">
+                                </td>
+                                <td>
+                                    {{ abonnement.typeabonnement.libelle }}
+                                    <h3>Durée d'engagement</h3>
+                                    <p> {{ abonnement.dure }} mois</p>
+                                </td>
+                                <td>{{ abonnement.prixUnitaire }} FCfa/ {{ abonnement.prixEuro ? abonnement.prixEuro : '' }} €</td>
+                                <td>1 </td>
+                                <td>{{ abonnement.prixUnitaire }}</td>
+{#                                <td> su</td>#}
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div>
+                                        <a href="{{ path('commande_panier_login') }}" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5 w-100 w-md-auto d-none d-md-inline-block">Valider ma commande</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+{% endblock %}

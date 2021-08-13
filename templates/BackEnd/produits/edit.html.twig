@@ -1,0 +1,26 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block stylesheet %}
+    <style>
+       .vich-image img {
+           height: 250px !important;
+       }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Modifier un produit </h5>
+                    </div>
+                    <div class="card-body">
+                        {{ include('BackEnd/produits/_form.html.twig', {'button_label': 'Modifier'}) }}
+                        {{ include('BackEnd/produits/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

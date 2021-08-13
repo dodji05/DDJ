@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+    <h1>Produits</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ produit.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.Prix }}</td>
+            </tr>
+            <tr>
+                <th>ImagesPrincipales</th>
+                <td>{{ produit.ImagesPrincipales }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ produit.Date ? produit.Date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ produit.CreatedAt ? produit.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ produit.UpdatedAt ? produit.UpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Featured</th>
+                <td>{{ produit.featured ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{{ produit.disponible ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>VersionPapier</th>
+                <td>{{ produit.VersionPapier ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>VersionNumerique</th>
+                <td>{{ produit.VersionNumerique ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('produits_index') }}">back to list</a>
+
+    <a href="{{ path('produits_edit', {'id': produit.id}) }}">edit</a>
+
+    {{ include('produits/_delete_form.html.twig') }}
+{% endblock %}

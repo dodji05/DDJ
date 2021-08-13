@@ -1,0 +1,99 @@
+{% extends 'FrontEnd/base_page_interieur.html.twig' %}
+ {% block leftcontent %}
+     <section class="blog_area section-padding">
+
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="blog_left_sidebar">
+                         {% for articles in CategoriesArticles.articles %}
+                             <div class="container">
+                                 <div class="row">
+
+                                     <div class="col-md-2">
+                                    <span style="font-size: 11px; color:#212529ab">
+                                       {{ articles.createdAt |format_datetime('full', 'none', locale='fr') }}
+                                    </span>
+                                     </div>
+                                     <div class="col-md-7">
+                                         <div class="blog_details">
+
+                                             <a class="d-inline-block" href="{{ path('front_articles_show',{'rubrique': articles.categories.slug, 'Slug': articles.slug}) }}">
+                                                 <h2>{{ articles.titre }} </h2>
+                                             </a>
+
+                                             {{ articles.contenu | slice(0, 235) | raw  }} ...
+
+                                             <!--                                <ul class="blog-info-link">-->
+                                             <!--                                    <li><a href=""><i class="fa fa-user"></i> Le Dit Trop</a></li>-->
+
+                                             <!--                                </ul>-->
+                                         </div>
+                                     </div>
+                                     <div class="col-md-3 p-0">
+
+                                         <div class="blog_item_img">
+                                             <img class="card-img rounded-0 my-img-blog"
+                                                  src="{{ vich_uploader_asset(articles) }}"
+                                                  alt="le dechaine du jeudi - {{ articles.titre }}">
+
+                                         </div>
+                                     </div>
+
+
+                                 </div>
+                             </div>
+                         {% endfor %}
+
+
+
+                         <!--                        <article class="blog_item">-->
+                         <!--                            <div class="blog_item_img">-->
+                         <!--                                <img class="card-img rounded-0"-->
+                         <!--                                     src="assets/images/articles/Articles-ddj-148-Impoli-tics-la-chaumiere-du-voisin.jpg"-->
+                         <!--                                     alt="">-->
+                         <!--                                <a href="#" class="blog_item_date">-->
+                         <!--                                    <h3>03</h3>-->
+                         <!--                                    <p>Juin</p>-->
+                         <!--                                </a>-->
+                         <!--                            </div>-->
+
+
+                         <!--                        </article>-->
+
+
+
+
+
+
+
+
+
+                         <!--                        <nav class="blog-pagination justify-content-center d-flex">-->
+                         <!--                            <ul class="pagination">-->
+                         <!--                                <li class="page-item">-->
+                         <!--                                    <a href="#" class="page-link" aria-label="Previous">-->
+                         <!--                                        <i class="ti-angle-left"></i>-->
+                         <!--                                    </a>-->
+                         <!--                                </li>-->
+                         <!--                                <li class="page-item">-->
+                         <!--                                    <a href="#" class="page-link">1</a>-->
+                         <!--                                </li>-->
+                         <!--                                <li class="page-item active">-->
+                         <!--                                    <a href="#" class="page-link">2</a>-->
+                         <!--                                </li>-->
+                         <!--                                <li class="page-item">-->
+                         <!--                                    <a href="#" class="page-link" aria-label="Next">-->
+                         <!--                                        <i class="ti-angle-right"></i>-->
+                         <!--                                    </a>-->
+                         <!--                                </li>-->
+                         <!--                            </ul>-->
+                         <!--                        </nav>-->
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+     </section>
+
+ {% endblock %}

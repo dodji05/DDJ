@@ -1,0 +1,65 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+
+{% block title %}
+    DDJ : Achetez un numéro du  DECHAINE DU JEUDI
+{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/cart.css') }}">
+
+{% endblock %}
+ {% block maincontent %}
+     <section class="blog_area section-padding">
+
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="row js-content">
+                         {% for parution in parutions %}
+                             <div class="col-md-3 col-sm-6 align-self-center parution-journal special-editions__item mb-5">
+                                 <a href="{{ path('accueil_achat_parution', {'Nom': parution.nom}) }}">
+                                 <div class="parution-items">
+                                     <img src="{{ vich_uploader_asset(parution) }}"
+                                          alt="DDJ - parution {{ parution.nom }} du {{ parution.date |format_datetime('full', 'none', locale='fr') }}"
+                                          class="img-fluid">
+
+                                 </div>
+                                 </a>
+                                 <div class="parution-details">
+                                     <div class="parutions-details-numero">
+                                         <a href="{{ path('accueil_achat_parution', {'Nom': parution.nom}) }}"> Parution {{ parution.nom }}</a>
+                                     </div>
+
+                                 </div>
+{#                                 <div class="action-details">#}
+{#                                     <a class="btn abonnement-link abonnement--premium btn-cart " type="button" style="font-size: 10px!important;">#}
+
+{#                                         Acheter la version papier#}
+{#                                     </a>#}
+{#                                     <a class="contact-us button-edito button-edito-parution btn-cart" type="button" style="font-size: 10px!important;">#}
+
+{#                                         Acheter la version papier#}
+{#                                     </a> &nbsp;&nbsp;&nbsp;#}
+{#                                 </div>#}
+
+
+                             </div>
+                         {% endfor %}
+
+
+
+
+
+
+
+
+
+                     </div>
+                 </div>
+
+
+
+             </div>
+         </div>
+
+     </section>
+ {% endblock %}

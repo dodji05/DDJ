@@ -1,0 +1,24 @@
+{% extends 'FrontEnd/base_page_interieur.html.twig' %}
+{% block stylesheet %}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-main.css') }}">#}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-util.css') }}">#}
+
+
+{% endblock %}
+ {% block leftcontent %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2> Votre message a été envoyé avec succes! </h2>
+                    <h2> Merci! </h2>
+                    <h2> <a href="{{ path('accueil_index') }}">Retour sur le site</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ {% endblock %}

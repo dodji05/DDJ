@@ -1,0 +1,59 @@
+{% extends 'FrontEnd/base_front_end.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/panier.css') }}">
+{% endblock %}
+{% block maincontent %}
+    <div class="basket-detail col-xs-12">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" ng-src="https://ws.aboshop.fr/aboweb/downloadservice/aboshop/editionsrotative/products/208/covers/miniature.png" alt="..." src="https://ws.aboshop.fr/aboweb/downloadservice/aboshop/editionsrotative/products/208/covers/miniature.png">
+                </a>
+            </div>
+            <div class="media-body">
+                <h2 class="basket-lib-produit ng-binding">FORMULE PREMIUM INTEGRALE</h2>
+                <!-- ngIf: displaydescriptioncourteoncartpage -->
+                <h3 class="basket-title-beneficiaire ng-binding ng-hide" ng-show="ligne.typeAdresseLiv === 7">Bénéficiaire</h3>
+                <p class="basket-lib-beneficiaire ng-binding ng-hide" ng-show="ligne.typeAdresseLiv === 7">
+                    <!-- ngIf: ligne.clientLiv.adressePrincipale.societe != '' && ligne.clientLiv.adressePrincipale.societe != null -->
+                    <!-- ngIf: ligne.clientLiv.adressePrincipale.societe != '' && ligne.clientLiv.adressePrincipale.societe != null && ligne.clientLiv.nomAffiche != '' && ligne.clientLiv.nomAffiche != null -->
+
+                </p>
+                <h3 class="basket-title-periodicite ng-binding" ng-show="ligne.produit.tarif.codeDureeAbonnement">Durée d'engagement</h3>
+                <p class="basket-lib-periodicite ng-binding" ng-show="ligne.produit.tarif.codeDureeAbonnement">Durée libre</p>
+                <h3 class="basket-title-support ng-binding" ng-show="ligne.produit.tarif.support != null">Support</h3>
+                <p class="basket-lib-support ng-binding" ng-show="ligne.produit.tarif.support != null">Papier et Numérique + Accès Site web</p>
+                <h3 class="basket-title-zone ng-binding">Zones de livraison éligibles</h3>
+                <p class="basket-lib-zone">
+                    <!-- ngIf: ligne.produit.tarif.zoneLivraison.translate == undefined||ligne.produit.tarif.zoneLivraison.translate == false --><span ng-if="ligne.produit.tarif.zoneLivraison.translate == undefined||ligne.produit.tarif.zoneLivraison.translate == false" class="ng-binding ng-scope">France Metropolitaine</span><!-- end ngIf: ligne.produit.tarif.zoneLivraison.translate == undefined||ligne.produit.tarif.zoneLivraison.translate == false -->
+                    <!-- ngIf: ligne.produit.tarif.zoneLivraison.translate == true -->
+                </p>
+                <!-- ngIf: ligne.produit.quantiteMax > 0 && !ligne.produit.estUnDon && !ligne.produit.tarif.montantLibre && !ligne.produit.tarif.supportNumeriqueOnly --><div class="product-quantity ng-scope" ng-if="ligne.produit.quantiteMax > 0 &amp;&amp; !ligne.produit.estUnDon &amp;&amp; !ligne.produit.tarif.montantLibre &amp;&amp; !ligne.produit.tarif.supportNumeriqueOnly">
+                    <h3 class="ng-binding">Quantité</h3>
+                    <div class="input-group marginquantity">
+	                <span class="input-group-btn">
+	                  <button type="button" class="btn btn-default btn-number" ng-disabled="lignesPourGestionQuantite[ligne.refLigneCommande].quantite<=lignesPourGestionQuantite[ligne.refLigneCommande].quantiteMin" data-type="minus" ng-click="addQtePanier(ligne,'-1')">−</button>
+	                </span>
+                        <input type="text" class="form-control input-number ng-pristine ng-untouched ng-valid ng-not-empty" value="2" ng-model="lignesPourGestionQuantite[ligne.refLigneCommande].quantite">
+                        <span class="input-group-btn">
+	                  <button type="button" class="btn btn-default btn-number" ng-disabled="lignesPourGestionQuantite[ligne.refLigneCommande].quantite>=lignesPourGestionQuantite[ligne.refLigneCommande].quantiteMax" data-type="plus" ng-click="addQtePanier(ligne,'1')">+</button>
+	                </span>
+                    </div>
+                </div><!-- end ngIf: ligne.produit.quantiteMax > 0 && !ligne.produit.estUnDon && !ligne.produit.tarif.montantLibre && !ligne.produit.tarif.supportNumeriqueOnly -->
+                <!-- ngIf: ligne.produit.quantiteMax > 0 && !ligne.produit.estUnDon && ligne.produit.tarif.montantLibre -->
+                <div class="basket-price">
+                    <div class="the-price">
+                        <h3 class="ng-binding">Prix</h3>
+                        <p class="ng-binding">21,80 €</p>
+                        <p class="old-price ng-binding ng-hide" ng-show="ligne.produit.tarif.tauxRemiseGlobale == null &amp;&amp; ligne.produit.tarif.tauxRemise != null &amp;&amp; ligne.produit.tarif.tauxRemise != '0,00' &amp;&amp; ligne.produit.tarif.typeRemise == 'P'">-0,00 % <span class="ng-binding">21,80 €</span></p>
+                        <p class="old-price ng-binding ng-hide" ng-show="ligne.produit.tarif.tauxRemiseGlobale == null &amp;&amp; ligne.produit.tarif.tauxRemise != null &amp;&amp; ligne.produit.tarif.tauxRemise != '0,00' &amp;&amp; ligne.produit.tarif.typeRemise == 'M'">-0,00 € <span class="ng-binding">21,80 €</span></p>
+                        <p class="old-price ng-binding ng-hide" ng-show="ligne.produit.tarif.tauxRemiseGlobale == null &amp;&amp; ligne.produit.tarif.tauxRemiseQuantite != null &amp;&amp; ligne.produit.tarif.tauxRemiseQuantite != '0,00' &amp;&amp; ligne.produit.tarif.typeRemiseQuantite == 'P'">-0,00 % <span class="ng-binding">21,80 €</span></p>
+                        <p class="old-price ng-hide" ng-show="ligne.produit.tarif.tauxRemiseGlobale == null &amp;&amp; ligne.produit.tarif.tauxRemiseQuantite != null &amp;&amp; ligne.produit.tarif.tauxRemiseQuantite != '0,00' &amp;&amp; ligne.produit.tarif.typeRemiseQuantite == 'M'">-ligne.produit.tarif.tauxRemiseQuantite € <span class="ng-binding">21,80 €</span></p>
+                        <p class="old-price ng-binding ng-hide" ng-show="ligne.produit.tarif.tauxRemiseGlobale != null &amp;&amp; ligne.produit.tarif.tauxRemiseGlobale != '0,00'">- % <span class="ng-binding">21,80 €</span></p>
+                        <a ng-click="deleteToCart(ligne.refLigneCommande)" href="#" class="gtm-cta price-close"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'FrontEnd/base_page_interieur.html.twig' %}
+{% block stylesheet %}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-main.css') }}">#}
+{#    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/form-util.css') }}">#}
+
+    <style>
+        .contact-form {
+            background-color: #fbfbfb;
+            padding: 15px 20px 15px;
+            border: 1px solid #ececec;
+            width: 450px;
+            margin: 50px auto;
+        }
+        .contact-form .form-header {
+            margin-bottom: 40px;
+            background-color: #ec1d25;
+        }
+        .contact-form form textarea {
+            max-width: 100%;
+            min-width: 100%;
+            min-height: 120px;
+        }
+        .contact-form form .btn-msg {
+            width: 100%;
+        }
+        .contact-form .form-header h2 {
+            font-weight: bold;
+            color: #ffffff;
+            padding-top:15px;
+            text-transform: uppercase;
+            font-family: 'urwgrotesk_condensed_bold';
+        }
+
+        .contact-form .form-header p {
+            color: #ffffff;
+        }
+
+        /*-- CSS for extra small devices--*/
+        @media (max-width: 767px){
+            .contact-form {
+                width: 90%;
+            }
+        }
+        .login100-form-title {
+
+            font-size: 40px;
+            color: #fff;
+            line-height: 1.2;
+            text-align: center;
+            font-family: 'urwgrotesk_condensed_bold';
+            display: block;
+            position: absolute;
+            /*width: 100%;*/
+            width: 450px;
+            top: 0;
+            left: 0;
+            background-color: #ec1d25;
+            padding-top: 50px;
+            padding-bottom: 39px;
+        }
+    </style>
+{% endblock %}
+ {% block leftcontent %}
+     <div class="contact-form">
+
+         <div class="form-header text-center">
+             <h2>Ecrivez nous </h2>
+             <p>Faites-nous part de vos remarques et suggestions</p>
+         </div>
+
+             {{ form_start(form) }}
+         <div class="form-group">
+             {{ form_widget(form.nom) }}
+         </div>
+             <div class="form-group">
+                 {{ form_widget(form.email) }}
+             </div>
+             <div class="form-group">
+                 {{ form_widget(form.telephone) }}
+             </div>
+
+         <div class="form-group">
+             {{ form_widget(form.objet) }}
+         </div>
+
+             <div class="form-group">
+                 {{ form_widget(form.message) }}
+             </div>
+             <div class="form-group">
+                 <button class="abonnement-link abonnement--premium button-edito" type="submit" style="margin: 0!important;">Envoyer</button>
+             </div>
+         {{ form_end(form) }}
+     </div>
+ {% endblock %}

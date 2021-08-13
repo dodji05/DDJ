@@ -1,0 +1,80 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('BackEnd/assets/css/vendors/datatables.css') }}">
+{% endblock %}
+
+
+{% block content %}
+{% include 'BackEnd/partials/_header_title.html.twig' %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-10 offset-md-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Articles </h5><a class="btn btn-outline-success"
+                                                    href="{{ path('admin_articles_new') }}"> Ajouter</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="basic-1_wrapper" class="dataTables_wrapper no-footer">
+                                <table class="display" id="basic-1">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Titre</th>
+
+
+                                        <th>Rubriques</th>
+                                        <th>Auteur</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for article in articles %}
+                                        <tr>
+                                            <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>
+                                            {% if article.categories.id == 8 %}
+                                            {{article.contenu | slice(0, 150)}}....
+                                            {% else %}
+                                            {{ article.titre }}
+                                            {% endif %}
+                                            </td>
+
+
+                                            <td>{{ article.categories.libelle }}</td>
+                                            <td>/</td>
+
+
+                                            <td>
+{#                                                <a href="{{ path('admin_articles_show', {'id': article.id}) }}">Afficher </a>#}
+                                                <a href="{{ path('admin_articles_edit', {'id': article.id}) }}">Modifier</a>
+                                                <a href="{{ path('admin_articles_delete', {'id': article.id}) }}">supprimer</a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="5">Pas d"articles !</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+{% block javascript %}
+<script src="{{ asset('BackEnd/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('BackEnd/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+{% endblock %}

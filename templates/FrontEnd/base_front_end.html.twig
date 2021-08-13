@@ -1,0 +1,298 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}
+        LE DECHAINE DU JEUDI - Hebdomadaire satirique paraissant à Cotonou
+    {% endblock %}
+    </title>
+    <meta name="description"
+          content="Le « Déchainé du Jeudi» est un hebdomadaire satirique et d'humour paraissant à Cotonou tous les jeudis. , lisez en numérique, achetez un numéro à l'unité"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href=" {{ asset('FrontEnd/assets/images/fav-icon-ddj.jpg') }}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/ticker-style.css') }}">
+    <link rel="stylesheet" href=" {{ asset('FrontEnd/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/nice-select.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/fonts/proxima/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/fonts/aller-font/fonts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/fonts/urwgrotesk/font.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FrontEnd/assets/css/fonts/Montserrat/webfonts/Montserrat.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('FrontEnd/assets/css/responsive.css') }}">
+    {% block stylesheet %}
+    {% endblock %}
+
+</head>
+    <body>
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-top black-ddj-white d-none d-md-block">
+                    <div class="container">
+                        <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left">
+                                    <nav class="text-center d-none d-md-flex">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="header-nav-items">
+                                                <a href="{{ path('accueil_formules_abonnement') }}"> ABONNEMENT </a>
+                                            </li>
+
+                                            <li class="header-nav-items">
+                                                <a href="{{ path('accueil_boutique_parutions') }}"> ACHETER LE JOURNAL</a>
+                                            </li>
+                                            <li class="header-nav-items">
+                                                <a href="{{ path('accueil_derniers_parution') }}">DERNIERE PARUTION </a>
+                                            </li>
+                                            <li class="header-nav-items">
+                                                <a href="#">PLAN DU SITE </a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="header-info-right">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="header-nav-items" style="color: #ec1d25">
+                                            <i class="far fa-user"></i><a href="{{ path('app_register') }}" style="color: #ec1d25"> MON COMPTE </a>
+                                        </li>
+                                        <li class="header-nav-items" style="color: #ec1d25">
+                                            <i class="fas fa-shopping-basket"></i> <a href="#" style="color: #ec1d25">
+                                                PANIER</a>
+                                        </li>
+                                    </ul>
+                                    <!--                                <ul class="header-date">-->
+                                    <!--                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>-->
+                                    <!--                                </ul>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="header-mid gray-bg d-none d-md-block">
+                    <div class="container-fluid">
+                        <div class="row d-flex align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
+                                <div class="logo">
+
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 text-center d-none d-md-block">
+                                <img src="{{ asset('FrontEnd/assets/images/banniere/banniere-titre-ddj.png')}}" alt="Logo" class="logo__img img-fluid "/>
+                                <div class="header-banner text-center ">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-bottom header-sticky">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-12 col-lg-12 col-md-12 header-flex">
+                                <!-- sticky -->
+                                <div class="sticky-logo">
+                                    <a href="#"><img src="{{ asset('FrontEnd/assets/images/logo/logo-mobile.jpg') }}" alt="" width="136px"></a>
+                                </div>
+                                <!-- Main-menu -->
+
+                                <div class="main-menu d-none d-md-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="{{ path('accueil_index') }}">Accueil</a></li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'le-dit-trop'}) }}">Le Dit Trop</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'impoli-tics'}) }}">Impoli- Tics</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'croc-actu'}) }}">Croc’Actu</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'canardage'}) }}">Canardage</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'beaux-coups-de-culture'}) }}">Beaux coups de
+                                                    culture</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('front_categorie_articles_index',{'slug': 'nos-crocs-niquent'}) }}">Nos Crocs Niquent</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('accueil_achives_parutions') }}">Nos Archives</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ path('accueil_equipe') }}">L'Equipe</a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!--                        <div class="col-xl-1 col-lg-1 col-md-1">-->
+                            <!--                            <div class="header-right f-right d-none d-lg-block">-->
+                            <!--                                &lt;!&ndash; Heder social &ndash;&gt;-->
+                            <!--                                <ul class="header-social">-->
+                            <!--                                    <li><a href="https://www.fb.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>-->
+                            <!--&lt;!&ndash;                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <li> <a href="#"><i class="fab fa-youtube"></i></a></li>&ndash;&gt;-->
+                            <!--                                </ul>-->
+                            <!--                                &lt;!&ndash; Search Nav &ndash;&gt;-->
+                            <!--&lt;!&ndash;                                <div class="nav-search search-switch">&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                    <i class="fa fa-search"></i>&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+                            <!--                            </div>-->
+                            <!--                        </div>-->
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-md-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% block flashNews %}
+                {% endblock %}
+
+
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        {% block maincontent %}
+        {% endblock %}
+    </main>
+
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Liens utiles </h4>
+                        <ul>
+                            <li><a href="{{ path('accueil_index') }}">Accueil</a></li>
+                            <li><a href="#">La rédaction</a></li>
+                            <li><a href="{{ path('accueil_formules_abonnement') }}">S'abonner</a></li>
+                            <li><a href="{{ path('accueil_boutique_parutions') }}">Acheter un numéro</a></li>
+                            <li><a href="#">CGV</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">Mentions légales</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Nos Rubriques</h4>
+                        <ul>
+
+                            <li><a href="{{ path('front_categorie_articles_index',{'slug': 'impoli-tics'}) }}">Impoli- Tics</a></li>
+                            <li><a href="{{ path('front_categorie_articles_index',{'slug': 'croc-actu'}) }}">Croc’Actu </a></li>
+                            <li><a href="{{ path('front_categorie_articles_index',{'slug': 'canardage'}) }}">Canardage </a></li>
+                            <li><a href="#">Les jeux du jeudi </a></li>
+                            <li><a href="{{ path('front_categorie_articles_index',{'slug': 'beaux-coups-de-culture'}) }}">Beaux coups de culture </a></li>
+                            <li><a href="#">Zig-zag </a></li>
+                            <li><a href="#">Croc’Actu-Inter et divers </a></li>
+                            <li><a href="#">BD </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Contacts </h4>
+                        <p>
+                            Par téléphone au 66 77 76 76
+                            de 9h à 18h du lundi au vendredi
+                            ou par email: infos@ledechainedujeudi.com <br>
+                            Le Déchainé du Jeudi - Service Abonnement
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>Le DDJ</h3>
+                        <p>
+                            Le « Déchainé du Jeudi» est un hebdomadaire satirique et d'humour paraissant à Cotonou les
+                            jeudis.
+
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="https://web.facebook.com/Le-D%C3%A9cha%C3%AEn%C3%A9-Du-Jeudi-243280782951558"
+                               class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UCSeND714XfLX0MqhOb-yDFQ" class="youtube"><i
+                                        class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright"> © Copyright <strong><span>Le Déchainé du Jeudi</span></strong>. Tous droits reservés</div>
+            <div class="credits"> Designed by <a href="#">AfroDigital</a></div>
+        </div>
+    </footer>
+
+    <!-- JS here -->
+
+    <script src="{{ asset('FrontEnd/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{ asset('FrontEnd/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/bootstrap.min.js') }}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{{ asset('FrontEnd/assets/js/jquery.slicknav.min.js') }}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{{ asset('FrontEnd/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/slick.min.js') }}"></script>
+    <!-- Date Picker -->
+    <script src="{{ asset('FrontEnd/assets/js/gijgo.min.js') }}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{{ asset('FrontEnd/assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/animated.headline.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.magnific-popup.js') }}"></script>
+
+    <!-- Scrollup, nice-select, sticky -->
+    <script src="{{ asset('FrontEnd/assets/js/jquery.scrollUp.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.sticky.js') }}"></script>
+
+    <!-- contact js -->
+    <script src="{{ asset('FrontEnd/assets/js/contact.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.form.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/mail-script.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/jquery.ajaxchimp.min.js') }}"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{{ asset('FrontEnd/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('FrontEnd/assets/js/main.js') }}"></script>
+    <script>
+
+    </script>
+    {% block javascript %}
+
+    {% endblock %}
+    </body>
+</html>

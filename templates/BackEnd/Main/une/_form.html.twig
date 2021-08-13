@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div class="col-sm-3">
+{#                        <img src="#" class="preview">#}
+{#                        {{ dump(form.vars.data.ImagesUne) }}#}
+{#                        {{ dump(form.vars.data) }}#}
+{#                        {% if form.vars.data.ImagesDeLaUne %}#}
+
+{#                            <img src="{{ asset('/uploads/images/la-une/') }}{{ form.vars.data.ImagesUne}}">#}
+{#                            <img src="({{  {{ asset('/uploads/images/la-une/') }}{{ form.vars.data.ImagesUne}})|imagine_filter('squared_thumbnail_small') }}" height="100">#}
+{#                        {% endif %}#}
+                    </div>
+                    <button class="btn btn-outline-success pull-right m-t-25">{{ button_label|default('Enregistrer') }}</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

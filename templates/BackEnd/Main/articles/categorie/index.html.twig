@@ -1,0 +1,235 @@
+{% extends 'BackEnd/base_admin.html.twig' %}
+
+
+
+{% block content %}
+    {% for label, messages in app.flashes(['success', 'warning']) %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="container-fluid">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-6">
+                    <h3>RUBRIQUES</h3>
+                </div>
+                <div class="col-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#"> <i data-feather="home"></i></a></li>
+                        <li class="breadcrumb-item">Les rubriques</li>
+                        {#                        <li class="breadcrumb-item active">Liste</li>#}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Ajouter une nouvelle rubrique</h6>
+                    </div>
+                    <div class="card-body">
+                        {{ include('BackEnd/Main/articles/categorie/_form.html.twig') }}
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Liste des differents rubriques</h6>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Rubrique</th>
+                                <th></th>
+
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for categories_article in categories_articles %}
+                                <tr>
+
+                                    <td>{{ categories_article.libelle }}</td>
+                                    <td> {{ categories_article.articles|length }}</td>
+                                    <td>
+
+                                        <a href="{{ path('admin_rubrique_artilces_edit', {'id': categories_article.id}) }}"
+                                           data-rec="{{ categories_article.id }}"
+                                           onclick="categorieEdit(event, this)">Modifier</a>
+                                        <a href="{{ path('admin_rubrique_artilces_delete', {'id': categories_article.id}) }}">Supprimer</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">Pas de rubrique ! </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '/modal.html.twig' with { modalId: 'edit-modal', modalTitle: 'Modifier une rubrique' } %}
+
+
+    <div class="modal" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-body" style="position:absolute;
+                                left: 50%;
+                                top: 50%;
+                                width: 200px;
+                                margin-left: -100px;
+                                margin-top: -100px;
+                                background-color: rgba(0, 0, 0, 0);
+                                ">
+            <div class="progress progress-striped active"
+                 style="text-align: center; height: 100px; background-color: rgba(0, 0, 0, 0);">
+                <div class="bar">
+                    <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #f5f5f5;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+<script>
+    function categorieEdit(e, $elem){
+        e.preventDefault();
+        //Get record to edit
+        var $id = $($elem).data('rec');
+        // var $modal = $('#pleaseWaitDialog');
+        var $modal = new bootstrap.Modal(document.getElementById('pleaseWaitDialog'), {
+            backdrop: static,
+            keyboard: false
+        })
+        var $autoEcoleForm = $('#edit-modal');
+        // Block screen
+        $modal.modal('show');
+        $route ="http://127.0.0.1:8000/espace-admin/articles/"+$id+"/create-form"
+        $submit_route = "http://127.0.0.1:8000/espace-admin/articles/"+$id+"/edit"
+
+        // Ajax request for get edit autoEcole form
+        $.ajax({
+            url:  $route, //Routing.generate('app_autoecole_edit_form', {'id' : $id }),
+            type: 'GET',
+            success: function (html) {
+                // Permit
+                $modal.modal('hide');
+                // add content to display
+
+                $autoEcoleForm.find('.modal-body').html(html);
+                //  alert(html);
+
+                // Add submit link to finish
+                var $submit = $("<input type='button' class ='autoEcole_edit_popup_submit btn btn-primary' value='Modifier' />").on('click', function (e) {
+                    e.preventDefault();
+                    // Get form to submit
+                    // alert("html");
+                    var $form = $('#restaurant');
+                    // alert($form.serialize());
+                    // Validate the form
+                    if(!formIsValide()){
+                        console.log('Some fields are required !!!');
+                        return false;
+                    }
+
+                    // Block btn action for future click
+                    var $el = $(this);
+                    $el.button('loading');
+                    // Submit form
+                    $.ajax({
+                        type: $form.attr('method'),
+                        url:  $submit_route, //Routing.generate('app_autoecole_edit', {'id' : $id }),
+                        data: $form.serialize()
+                    })
+                        .done(function (data) {
+                            if(!data.success){
+                                console.log(JSON.stringify(data.errors));
+                                alert(JSON.stringify(data.errors))
+                            }else{
+                                // Redirect to Home page
+                                window.location.href = "http://127.0.0.1:8000/restaurants/";
+                            }
+                        }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(textStatus);
+                        console.log(errorThrown);
+
+                        // Permit the button
+                        $el.button('reset');
+                    });
+                });
+
+                // Append it
+                $autoEcoleForm.find('.modal-footer').empty().append($submit);
+                // Display
+                $autoEcoleForm.modal('show');
+            }
+        })
+    }
+    function formIsValide() {
+        var isvalid = true;
+
+        // Vérifier si tous les champs obligatoires sont remplis
+        $('.mandatory').each(function () {
+            var $el = $(this);
+            var val, $parent;
+            if ($el.is('input')) {
+                if ($el.attr('type') === 'number') {
+                    val = $.trim($el.val());
+                    $parent = $el.closest('.form-group');
+                    $parent.removeClass('has-error');
+                    if (val == '') {
+                        $parent.addClass('has-error');
+                        isvalid = isvalid && false;
+                    }
+                } else if ($el.attr('type') === 'checkbox') {
+                } else {
+                    val = $.trim($el.val());
+                    $parent = $el.closest('.form-group');
+                    $parent.removeClass('has-error');
+                    if (val == '') {
+                        $parent.addClass('has-error');
+                        isvalid = isvalid && false;
+                    }
+                }
+            } else if ($el.is('select')) {
+                val = $.trim($el.val());
+                $parent = $el.closest('.form-group');
+                $parent.removeClass('has-error');
+                if (val == '') {
+                    $parent.addClass('has-error');
+                    isvalid = isvalid && false;
+                }
+            } else if ($el.is('textarea')) {
+                val = $.trim($el.val());
+                $parent = $el.closest('.form-group');
+                $parent.removeClass('has-error');
+                if (val == '') {
+                    $parent.addClass('has-error');
+                    isvalid = isvalid && false;
+                }
+            }
+        });
+
+        return isvalid;
+    }
+</script>
+{% endblock %}
